@@ -13,6 +13,7 @@ firstName,,,yes,varchar(20),,
 lastName,,,yes,varchar(20),,
 profilePhoto,,,yes,image,,
 ,,,,,,
+===========================================================
 Member,,,,,,
 MemberID,primary,,yes,int,yes,yes
 userID,foreign,User,yes,int,,yes
