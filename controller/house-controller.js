@@ -57,19 +57,6 @@ module.exports.updateHouse = function(req, res){
     })
 }
 
-module.exports.houseById = function(req, res){
-    
-    let houseId = req.params.houseId;
-    
-    HouseModel.findById({"_id" : houseId}, function(err, data){
-        if (err) {
-            res.json({ msg: "Something Went Wrong", status: -1, data: err })
-        }
-        else {
-            res.json({ msg: "house is found successfully", status: 200, data: data })
-        }
-    })
-}
 
 //get house by houseid
 module.exports.getHouseById = function(req, res){

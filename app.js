@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
 const houseController = require("./controller/house-controller")
+const vehicleController=require("./controller/vehicle-controller")
 
 const app = express()
 //middle ware 
@@ -52,6 +53,14 @@ app.get("/houses",houseController.getAllHouses)
 app.delete("/houses/:houseId",houseController.deleteHouse)
 app.put("/houses",houseController.updateHouse)
 app.get("/houses/:houseId",houseController.getHouseById)
+
+//vehicle
+app.post("/vehicles",vehicleController.addVehicle)
+app.get("/vehicles",vehicleController.getAllVehicles)
+app.delete("/vehicles/:vehicleId",vehicleController.deleteVehicle)
+app.put("/vehicles",vehicleController.updateVehicle)
+app.get("/vehicles/:vehicleId",vehicleController.getVehicleById)
+
 
 
 
