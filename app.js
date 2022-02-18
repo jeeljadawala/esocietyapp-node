@@ -6,6 +6,7 @@ const userController = require("./controller/user-controller")
 const houseController = require("./controller/house-controller")
 const vehicleController=require("./controller/vehicle-controller")
 const guardController = require("./controller/securityGuard-controller")
+const deliverableController = require("./controller/deliverable-controller")
 
 const app = express()
 
@@ -69,9 +70,21 @@ app.delete("/guards/:guardId", guardController.deleteGuard)
 app.put("/guards", guardController.updateGuard)
 app.get("/guards/:guardId", guardController.guardById)
 
+//deliverable
+app.post("/deliverables", deliverableController.addDeliverable)
+app.get("/deliverables", deliverableController.getAllDeliverables)
+app.delete("/deliverables/:deliverableId", deliverableController.deleteDeliverable)
+app.put("/deliverables", deliverableController.updateDeliverable)
+app.get("/deliverables/:deliverableId", deliverableController.getDeliverableById)
+
+
 
 
 //server
-app.listen(4000,function(){
+app.listen(3000,function(){
   console.log("server started on 3000");  
 })
+
+/*app.listen(4000,function(){
+  console.log("server started on 4000");  
+}) */

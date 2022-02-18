@@ -1,1 +1,6 @@
+date remove timestamp
+
+Profile photo(img)
+
+Attendence (auto increment - plugin?)
 
