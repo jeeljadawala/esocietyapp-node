@@ -5,11 +5,11 @@ const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
 const houseController = require("./controller/house-controller")
 const vehicleController=require("./controller/vehicle-controller")
+const guardController = require("./controller/securityGuard-controller")
 
 const app = express()
+
 //middle ware 
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
 app.use(express.json()) //mobile -> accept json data from request and set data into body 
 app.use(express.urlencoded({extended:true})) //web --> accept url encoded data from request and set data into body  
 
@@ -39,6 +39,7 @@ app.post("/roles",roleController.addRole)
 app.get("/roles",roleController.getAllRoles)
 app.delete("/roles/:roleId",roleController.deleteRole)
 app.put("/roles",roleController.updateRole)
+app.get("/roles/:roleId", roleController.roleById)
 
 //user
 app.post("/users", userController.addUser)
@@ -61,11 +62,16 @@ app.delete("/vehicles/:vehicleId",vehicleController.deleteVehicle)
 app.put("/vehicles",vehicleController.updateVehicle)
 app.get("/vehicles/:vehicleId",vehicleController.getVehicleById)
 
-
+//security guard
+app.post("/guards", guardController.addGuard)
+app.get("/guards", guardController.getAllGuards)
+app.delete("/guards/:guardId", guardController.deleteGuard)
+app.put("/guards", guardController.updateGuard)
+app.get("/guards/:guardId", guardController.guardById)
 
 
 
 //server
-app.listen(3000,function(){
+app.listen(4000,function(){
   console.log("server started on 3000");  
 })
