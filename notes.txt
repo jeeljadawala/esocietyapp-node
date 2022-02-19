@@ -1,16 +1,18 @@
 Remaining tasks
-child model and controller
+-------------------
 set default value in model
 time - entryTime, exitTime in visitor 
+add time in childSchedule
+childSchedule update method not working : because need to update timings and time is not yet added
+addition of profilePhoto
 
-
+=================================================================================================================
 Doubts -
 
 date remove timestamp in visitor, 
 Profile photo(img)
 Attendence (auto increment - plugin?)
 birth : { type: Date, default: Date.now }
-
 getById and populate : how to use together
 
 ===========================================================================================================

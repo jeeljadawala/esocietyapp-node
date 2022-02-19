@@ -10,6 +10,7 @@ const deliverableController = require("./controller/deliverable-controller")
 const categoryController = require("./controller/visitorCategory-controller")
 const memberController = require("./controller/member-controller")
 const visitorController = require("./controller/visitor-controller")
+const childScheduleController = require("./controller/childSchedule-controller")
 
 const app = express()
 
@@ -102,12 +103,21 @@ app.delete("/visitors/:visitorId", visitorController.deleteVisitor)
 app.put("/visitors", visitorController.updateVisitor)
 app.get("/visitors/:visitorId", visitorController.getVisitorById)
 
+//childSchedule
+app.post("/childSchedules", childScheduleController.addChildSchedule)
+app.get("/childSchedules", childScheduleController.getAllChildSchedules)
+app.delete("/childSchedules/:childScheduleId", childScheduleController.deleteChildSchedule)
+app.put("/childSchedules", childScheduleController.updateChildSchedule)
+app.get("/childSchedules/:childScheduleId", childScheduleController.getChildScheduleById)
 
-//server
-app.listen(4000,function(){
-  console.log("server started on 4000");  
-})
 
+//server keya
 /*app.listen(4000,function(){
   console.log("server started on 4000");  
-}) */
+})*/
+
+
+//server jeel
+app.listen(3000,function(){
+  console.log("server started on 3000");  
+}) 
