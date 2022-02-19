@@ -1,11 +1,12 @@
 Remaining tasks
-visitor child member model and controller
+child model and controller
 set default value in model
+time - entryTime, exitTime in visitor 
 
 
 Doubts -
 
-date remove timestamp
+date remove timestamp in visitor, 
 Profile photo(img)
 Attendence (auto increment - plugin?)
 birth : { type: Date, default: Date.now }

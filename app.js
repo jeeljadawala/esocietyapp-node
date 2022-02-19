@@ -9,6 +9,7 @@ const guardController = require("./controller/securityGuard-controller")
 const deliverableController = require("./controller/deliverable-controller")
 const categoryController = require("./controller/visitorCategory-controller")
 const memberController = require("./controller/member-controller")
+const visitorController = require("./controller/visitor-controller")
 
 const app = express()
 
@@ -94,9 +95,17 @@ app.delete("/members/:memberId",memberController.deleteMember)
 app.put("/members",memberController.updateMember)
 app.get("/members/:memberId",memberController.getMemberById)
 
+//visitor
+app.post("/visitors", visitorController.addVisitor)
+app.get("/visitors", visitorController.getAllVisitors)
+app.delete("/visitors/:visitorId", visitorController.deleteVisitor)
+app.put("/visitors", visitorController.updateVisitor)
+app.get("/visitors/:visitorId", visitorController.getVisitorById)
+
+
 //server
-app.listen(3000,function(){
-  console.log("server started on 3000");  
+app.listen(4000,function(){
+  console.log("server started on 4000");  
 })
 
 /*app.listen(4000,function(){
