@@ -7,7 +7,8 @@ module.exports.addVehicle = function (req, res) {         //API
     let vehicle = new VehicleModel({
         vehicleNo: req.body.vehicleNo,
         parkingId: req.body.parkingId,
-        vehicleType : req.body.vehicleType
+        vehicleType : req.body.vehicleType,
+        user: req.body.user
 
     })
 
@@ -24,7 +25,7 @@ module.exports.addVehicle = function (req, res) {         //API
 
 //list
 module.exports.getAllVehicles = function (req, res) {
-    VehicleModel.find(function (err, vehicles) {
+    VehicleModel.find().populate("user").exec(function (err, vehicles) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

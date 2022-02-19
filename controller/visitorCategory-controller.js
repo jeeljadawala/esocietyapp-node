@@ -47,7 +47,7 @@ module.exports.updateCategory = function(req, res){
     let categoryId = req.body.categoryId
     let categoryName = req.body.categoryName
 
-    CategoryModel.updateOne({"_id" : categoryId},{ "roleName": categoryName}, function(err, data){
+    CategoryModel.updateOne({"_id" : categoryId},{ "categoryName": categoryName}, function(err, data){
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

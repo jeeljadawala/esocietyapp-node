@@ -10,9 +10,9 @@ Profile photo(img)
 Attendence (auto increment - plugin?)
 birth : { type: Date, default: Date.now }
 
+getById and populate : how to use together
 
-
-
+===========================================================================================================
 Defining documents within documents
 To define an array of documents that follows a certain schema, make the value an array with the schema constructor inside.
 
