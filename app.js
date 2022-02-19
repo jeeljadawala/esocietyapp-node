@@ -8,6 +8,7 @@ const vehicleController=require("./controller/vehicle-controller")
 const guardController = require("./controller/securityGuard-controller")
 const deliverableController = require("./controller/deliverable-controller")
 const categoryController = require("./controller/visitorCategory-controller")
+const memberController = require("./controller/member-controller")
 
 const app = express()
 
@@ -85,6 +86,13 @@ app.delete("/categories/:categoryId",categoryController.deleteCategory)
 app.put("/categories",categoryController.updateCategory)
 app.get("/categories/:categoryId", categoryController.getCategoryById)
 
+
+//member
+app.post("/members",memberController.addMember)
+app.get("/members",memberController.getAllMembers)
+app.delete("/members/:memberId",memberController.deleteMember)
+app.put("/members",memberController.updateMember)
+app.get("/members/:memberId",memberController.getMemberById)
 
 //server
 app.listen(3000,function(){

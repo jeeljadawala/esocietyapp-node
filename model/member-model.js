@@ -1,52 +1,33 @@
 const mongoose = require("mongoose")
 
 //schema
-let UserSchema = new mongoose.Schema({
-    email : {
+let MemberSchema = new mongoose.Schema({
+    memberName : {
         type : String,
         required: true,
-        unique: true,
         maxLength: 50
     },
 
-    password : {
-        type : String,
+    age : {
+        type : Number,
         required: true,
-        maxLength: 20
+        maxLength: 3
     },
 
-    mobileNo : {
-        type : String,
-        required: true,
-        maxLength: 10
-    },
-
-    firstName : {
-        type : String,
-        required: true,
-        maxLength: 20
-    },
-
-    lastName : {
-        type : String,
-        required: true,
-        maxLength: 20
-    },
-
-    // profilePhoto : {
-    //     data: Buffer,
-    //     contentType: String,
-    //     required: true
-    // },
-
-    role : {
+   
+     user: {
         type:mongoose.Schema.Types.ObjectId,
-        ref:"role"
+        ref:"user"
+    },
+
+    house:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"house"
     }
 
 })
 
 //model
-const UserModel = mongoose.model("user",UserSchema)
-module.exports = UserModel
+const MemberModel = mongoose.model("member",MemberSchema)
+module.exports = MemberModel
  

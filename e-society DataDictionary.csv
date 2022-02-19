@@ -18,6 +18,9 @@ Member,,,,,,
 MemberID,primary,,yes,int,yes,yes
 userID,foreign,User,yes,int,,yes
 HouseID,foreign,House,yes,varchar(20),,
+memberName,,,yes,varchar(20),,
+age,,,yes,int,,
+
 ,,,,,,
 House,,,,,,
 HouseID,primary,,yes,int,yes,yes
