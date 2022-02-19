@@ -49,4 +49,3 @@ let UserSchema = new mongoose.Schema({
 //model
 const UserModel = mongoose.model("user",UserSchema)
 module.exports = UserModel
- 

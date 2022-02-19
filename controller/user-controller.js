@@ -67,7 +67,7 @@ module.exports.updateUser = function(req, res){
 }
 
 //get user by userid
-module.exports.userById = function(req, res){
+module.exports.getUserById = function(req, res){
     
     let userId = req.params.userId;
     

@@ -64,7 +64,7 @@ module.exports.updateGuard = function(req, res){
 }
 
 //get user by userid
-module.exports.guardById = function(req, res){
+module.exports.getGuardById = function(req, res){
     
     let guardId = req.params.guardId;
     

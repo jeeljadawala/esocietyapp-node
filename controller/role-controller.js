@@ -57,7 +57,7 @@ module.exports.updateRole = function(req, res){
     })
 }
 
-module.exports.roleById = function(req, res){
+module.exports.getRoleById = function(req, res){
     
     let roleId = req.params.roleId;
     

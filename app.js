@@ -41,14 +41,14 @@ app.post("/roles",roleController.addRole)
 app.get("/roles",roleController.getAllRoles)
 app.delete("/roles/:roleId",roleController.deleteRole)
 app.put("/roles",roleController.updateRole)
-app.get("/roles/:roleId", roleController.roleById)
+app.get("/roles/:roleId", roleController.getRoleById)
 
 //user
 app.post("/users", userController.addUser)
 app.get("/users", userController.getAllUsers)
 app.delete("/users/:userId", userController.deleteUser)
 app.put("/users", userController.updateUser)
-app.get("/users/:userId", userController.userById)
+app.get("/users/:userId", userController.getUserById)
 
 //house
 app.post("/houses",houseController.addHouse)
@@ -69,7 +69,7 @@ app.post("/guards", guardController.addGuard)
 app.get("/guards", guardController.getAllGuards)
 app.delete("/guards/:guardId", guardController.deleteGuard)
 app.put("/guards", guardController.updateGuard)
-app.get("/guards/:guardId", guardController.guardById)
+app.get("/guards/:guardId", guardController.getGuardById)
 
 //deliverable
 app.post("/deliverables", deliverableController.addDeliverable)
@@ -83,7 +83,7 @@ app.post("/categories",categoryController.addCategory)
 app.get("/categories",categoryController.getAllCategories)
 app.delete("/categories/:categoryId",categoryController.deleteCategory)
 app.put("/categories",categoryController.updateCategory)
-app.get("/categories/:categoryId", categoryController.categoryById)
+app.get("/categories/:categoryId", categoryController.getCategoryById)
 
 
 //server

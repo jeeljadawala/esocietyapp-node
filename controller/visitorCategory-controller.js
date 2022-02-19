@@ -32,7 +32,7 @@ module.exports.getAllCategories = function (req, res) {
 
 module.exports.deleteCategory = function(req, res){
 
-    let categoryId = req.params.roleId
+    let categoryId = req.params.categoryId
     CategoryModel.deleteOne({"_id" : categoryId}, function(err, data){
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
@@ -57,7 +57,7 @@ module.exports.updateCategory = function(req, res){
     })
 }
 
-module.exports.categoryById = function(req, res){
+module.exports.getCategoryById = function(req, res){
     
     let categoryId = req.params.categoryId;
     
