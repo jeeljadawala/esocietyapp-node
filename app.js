@@ -7,6 +7,7 @@ const houseController = require("./controller/house-controller")
 const vehicleController=require("./controller/vehicle-controller")
 const guardController = require("./controller/securityGuard-controller")
 const deliverableController = require("./controller/deliverable-controller")
+const categoryController = require("./controller/visitorCategory-controller")
 
 const app = express()
 
@@ -77,7 +78,12 @@ app.delete("/deliverables/:deliverableId", deliverableController.deleteDeliverab
 app.put("/deliverables", deliverableController.updateDeliverable)
 app.get("/deliverables/:deliverableId", deliverableController.getDeliverableById)
 
-
+//visitor category
+app.post("/categories",categoryController.addCategory)
+app.get("/categories",categoryController.getAllCategories)
+app.delete("/categories/:categoryId",categoryController.deleteCategory)
+app.put("/categories",categoryController.updateCategory)
+app.get("/categories/:categoryId", categoryController.categoryById)
 
 
 //server

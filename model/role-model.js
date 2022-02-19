@@ -3,8 +3,10 @@ const mongoose = require("mongoose")
 //schema
 let RoleSchema = new mongoose.Schema({
     roleName: {
-        type: String
-        //required: true
+        type: String,
+        required: true,
+        maxlength: 25, 
+        unique: true
     }
 })
 
