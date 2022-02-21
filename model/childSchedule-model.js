@@ -28,13 +28,20 @@ let ChildScheduleSchema = new mongoose.Schema(
         house:{
             type:mongoose.Schema.Types.ObjectId,
             ref:"house"
+        },
+        profilePhoto : {
+            type : String
+        },
+        
+        allowedStartingTime : {
+            type : String
+        },
+
+        allowedEndingTime : {
+            type : String
         }
-
-
-
     }
 )
 
 const ChildScheduleModel = mongoose.model("childSchedule",ChildScheduleSchema)
-
 module.exports = ChildScheduleModel;

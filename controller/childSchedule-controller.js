@@ -10,7 +10,10 @@ module.exports.addChildSchedule = function (req, res) {         //API
     age: req.body.age,
     contactName : req.body.contactName,
     contactNo: req.body.contactNo,
-    house:req.body.house
+    house:req.body.house,
+    profilePhoto : req.body.profilePhoto,
+    allowedStartingTime : req.body.allowedStartingTime,
+    allowedEndingTime : req.body.allowedEndingTime
     })
 
     childSchedule.save(function (err, success) {

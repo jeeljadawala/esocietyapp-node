@@ -1,17 +1,21 @@
 const UserModel = require("../model/user-model")
+const bcrypt = require("bcrypt")
 
 //add
 module.exports.addUser = function (req, res) {         //API
     //db insert role
     //console.log(req.body.roleName)
 
+    let encryptedPassword = bcrypt.hashSync(req.body.password,10)
+
     let user = new UserModel({
         email: req.body.email,
-        password : req.body.password,
+        password : encryptedPassword,
         mobileNo : req.body.mobileNo,
         firstName : req.body.firstName,
         lastName : req.body.lastName,
-        role: req.body.role
+        role: req.body.role,
+        profilePhoto : req.body.profilePhoto
     })
 
     user.save(function (err, success) {
@@ -80,3 +84,5 @@ module.exports.getUserById = function(req, res){
         }
     })
 }
+
+//login

@@ -11,8 +11,8 @@ let UserSchema = new mongoose.Schema({
 
     password : {
         type : String,
-        required: true,
-        maxLength: 20
+        required: true
+      //  maxLength: 2000
     },
 
     mobileNo : {
@@ -33,11 +33,9 @@ let UserSchema = new mongoose.Schema({
         maxLength: 20
     },
 
-    // profilePhoto : {
-    //     data: Buffer,
-    //     contentType: String,
-    //     required: true
-    // },
+    profilePhoto : {
+        type: String
+     },
 
     role : {
         type:mongoose.Schema.Types.ObjectId,

@@ -6,6 +6,7 @@ const userController = require("./controller/user-controller")
 const houseController = require("./controller/house-controller")
 const vehicleController=require("./controller/vehicle-controller")
 const guardController = require("./controller/securityGuard-controller")
+const guardAttendenceController = require("./controller/securityGuardAttendence-controller")
 const deliverableController = require("./controller/deliverable-controller")
 const categoryController = require("./controller/visitorCategory-controller")
 const memberController = require("./controller/member-controller")
@@ -74,6 +75,15 @@ app.delete("/guards/:guardId", guardController.deleteGuard)
 app.put("/guards", guardController.updateGuard)
 app.get("/guards/:guardId", guardController.getGuardById)
 
+
+//security guard attendence
+app.post("/guardAttendences", guardAttendenceController.addGuardAttendence)
+app.get("/guardAttendences", guardAttendenceController.getAllGuardAttendences)
+app.delete("/guardAttendences/:guardAttendenceId", guardAttendenceController.deleteGuardAttendence)
+app.put("/guardAttendences", guardAttendenceController.updateGuardAttendence)
+app.get("/guardAttendences/:guardId", guardAttendenceController.getGuardAttendenceById)
+
+
 //deliverable
 app.post("/deliverables", deliverableController.addDeliverable)
 app.get("/deliverables", deliverableController.getAllDeliverables)
@@ -112,12 +122,12 @@ app.get("/childSchedules/:childScheduleId", childScheduleController.getChildSche
 
 
 //server keya
-/*app.listen(4000,function(){
+app.listen(4000,function(){
   console.log("server started on 4000");  
-})*/
+})
 
 
 //server jeel
-app.listen(3000,function(){
-  console.log("server started on 3000");  
-}) 
+// app.listen(3000,function(){
+//   console.log("server started on 3000");  
+// }) 

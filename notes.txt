@@ -9,11 +9,9 @@ addition of profilePhoto
 =================================================================================================================
 Doubts -
 
-date remove timestamp in visitor, 
-Profile photo(img)
-Attendence (auto increment - plugin?)
-birth : { type: Date, default: Date.now }
-getById and populate : how to use together
+only date ==> String, 
+Profile photo(img) 
+only time
 
 ===========================================================================================================
 Defining documents within documents

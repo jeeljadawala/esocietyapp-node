@@ -9,10 +9,8 @@ let VisitorSchema = new mongoose.Schema({
     },
 
     date : {
-        type: Date, 
-        default: Date.now,
-        required: true,
-        timestamps: false
+        type: String, 
+        required: true
     },
 
     isAllowed : {
@@ -37,11 +35,9 @@ let VisitorSchema = new mongoose.Schema({
         maxLength: 25
     },
 
-    // profilePhoto : {
-    //     data: Buffer,
-    //     contentType: String,
-    //     required: true
-    // },
+    profilePhoto : {
+        type: String
+     },
 
     visitorCategory : {
         type:mongoose.Schema.Types.ObjectId,
@@ -51,6 +47,14 @@ let VisitorSchema = new mongoose.Schema({
     house : {
         type: mongoose.Schema.Types.ObjectId,
         ref : "house"
+    },
+
+    entryTime : {
+        type : String
+    },
+
+    exitTime : {
+        type : String
     }
 
 })

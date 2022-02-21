@@ -30,8 +30,12 @@ HouseTitle,,,yes,varchar,,yes
 security guard,,,,,,
 guardName,,,yes,varchar(20),,
 guardID,primary,,yes,int,yes,yes
-attendance,,,yes,int,yes,
 ,,,,,,
+,,,,,,
+security guard attendence,,,,,,
+attendenceID,primary,,yes,int,yes
+security guard Id, foreign, security guard, yes, int,,
+isPresent,,,yes,boolean,
 ,,,,,,
 Vehicle,,,,,,
 MemberID,foreign,Member,yes,int,,

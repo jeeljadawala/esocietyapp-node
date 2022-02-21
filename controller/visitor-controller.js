@@ -12,7 +12,10 @@ module.exports.addVisitor = function (req, res) {         //API
         isPreScheduled : req.body.isPreScheduled,
         mobileNo : req.body.mobileNo,
         visitorCategory : req.body.visitorCategory,
-        house : req.body.house
+        house : req.body.house,
+        profilePhoto : req.body.profilePhoto,
+        entryTime : req.body.entryTime,
+        exitTime : req.body.exitTime
     })
 
     visitor.save(function (err, success) {

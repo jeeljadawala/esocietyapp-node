@@ -8,12 +8,6 @@ let GuardSchema = new mongoose.Schema({
         maxLength: 300
     },
 
-    // attendance : {
-    //     type : Number,
-    //     //required: true,
-        
-    // },
-
     mobileNo : {
         type : String,
         required: true,
@@ -29,5 +23,5 @@ let GuardSchema = new mongoose.Schema({
 })
 
 //model
-const GuardModel = mongoose.model("guard",GuardSchema)
+const GuardModel  = mongoose.model("guard", GuardSchema)
 module.exports = GuardModel
