@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 //schema
-let GuardAttendenceSchema = new mongoose.Schema({
+let GuardAttendanceSchema = new mongoose.Schema({
     isPresent : {
         type : Boolean,
         required: true    
@@ -12,5 +12,5 @@ let GuardAttendenceSchema = new mongoose.Schema({
     }
 })
 //model
-const GuardAttendenceModel = mongoose.model("guardAttendence",GuardAttendenceSchema)
-module.exports = GuardAttendenceModel
+const GuardAttendanceModel = mongoose.model("guardAttendance",GuardAttendanceSchema)
+module.exports = GuardAttendanceModel

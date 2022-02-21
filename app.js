@@ -6,7 +6,7 @@ const userController = require("./controller/user-controller")
 const houseController = require("./controller/house-controller")
 const vehicleController=require("./controller/vehicle-controller")
 const guardController = require("./controller/securityGuard-controller")
-const guardAttendenceController = require("./controller/securityGuardAttendence-controller")
+const guardAttendanceController = require("./controller/securityGuardAttendance-controller")
 const deliverableController = require("./controller/deliverable-controller")
 const categoryController = require("./controller/visitorCategory-controller")
 const memberController = require("./controller/member-controller")
@@ -37,7 +37,8 @@ app.get("/",function(req,res){
     res.end()
 })
 
-
+//login
+app.post("/login",userController.login)
 
 
 //role 
@@ -53,6 +54,7 @@ app.get("/users", userController.getAllUsers)
 app.delete("/users/:userId", userController.deleteUser)
 app.put("/users", userController.updateUser)
 app.get("/users/:userId", userController.getUserById)
+
 
 //house
 app.post("/houses",houseController.addHouse)
@@ -77,11 +79,11 @@ app.get("/guards/:guardId", guardController.getGuardById)
 
 
 //security guard attendence
-app.post("/guardAttendences", guardAttendenceController.addGuardAttendence)
-app.get("/guardAttendences", guardAttendenceController.getAllGuardAttendences)
-app.delete("/guardAttendences/:guardAttendenceId", guardAttendenceController.deleteGuardAttendence)
-app.put("/guardAttendences", guardAttendenceController.updateGuardAttendence)
-app.get("/guardAttendences/:guardId", guardAttendenceController.getGuardAttendenceById)
+app.post("/guardAttendances", guardAttendanceController.addGuardAttendance)
+app.get("/guardAttendances", guardAttendanceController.getAllGuardAttendances)
+app.delete("/guardAttendances/:guardAttendanceId", guardAttendanceController.deleteGuardAttendance)
+app.put("/guardAttendances", guardAttendanceController.updateGuardAttendance)
+app.get("/guardAttendances/:guardId", guardAttendanceController.getGuardAttendanceById)
 
 
 //deliverable
@@ -122,12 +124,12 @@ app.get("/childSchedules/:childScheduleId", childScheduleController.getChildSche
 
 
 //server keya
-app.listen(4000,function(){
+/*app.listen(4000,function(){
   console.log("server started on 4000");  
 })
-
+*/
 
 //server jeel
-// app.listen(3000,function(){
-//   console.log("server started on 3000");  
-// }) 
+ app.listen(3000,function(){
+   console.log("server started on 3000");  
+ }) 
