@@ -62,12 +62,12 @@ module.exports.updateGuardAttendance = function(req, res){
     })
 }
 
-//get user by userid
+//get guard attendance record by guard attendance id
 module.exports.getGuardAttendanceById = function(req, res){
     
-    let guardId = req.params.guard._id;
+    let guardAttendanceId = req.params.guardAttendanceId;
     
-    GuardAttendanceModel.findById({"guard" : guardId}).populate("guard").exec(function(err, data){
+    GuardAttendanceModel.findById({"_id" : guardAttendanceId}).populate("guard").exec(function(err, data){
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

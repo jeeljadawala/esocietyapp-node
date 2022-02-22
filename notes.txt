@@ -1,12 +1,6 @@
-Remaining tasks
--------------------
-set default value in model
-childSchedule update method not working : because need to update timings and time is not yet added
-addition of profilePhoto
-
 =================================================================================================================
 Doubts -
-
+Can we access all the records of guard attendance by passing guard ID in getGuardAttendanceById() method
 
 
 ===========================================================================================================

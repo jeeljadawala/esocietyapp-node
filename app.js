@@ -83,7 +83,7 @@ app.post("/guardAttendances", guardAttendanceController.addGuardAttendance)
 app.get("/guardAttendances", guardAttendanceController.getAllGuardAttendances)
 app.delete("/guardAttendances/:guardAttendanceId", guardAttendanceController.deleteGuardAttendance)
 app.put("/guardAttendances", guardAttendanceController.updateGuardAttendance)
-app.get("/guardAttendances/:guardId", guardAttendanceController.getGuardAttendanceById)
+app.get("/guardAttendances/:guardAttendanceId", guardAttendanceController.getGuardAttendanceById)
 
 
 //deliverable
@@ -130,6 +130,6 @@ app.get("/childSchedules/:childScheduleId", childScheduleController.getChildSche
 */
 
 //server jeel
- app.listen(3000,function(){
+ app.listen(4000,function(){
    console.log("server started on 3000");  
  }) 
