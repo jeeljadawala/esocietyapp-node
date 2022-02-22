@@ -41,16 +41,19 @@ let VisitorSchema = new mongoose.Schema({
 
     visitorCategory : {
         type:mongoose.Schema.Types.ObjectId,
-        ref:"visitorCategory"
+        ref:"visitorCategory",
+        required: true
     },
 
     house : {
         type: mongoose.Schema.Types.ObjectId,
-        ref : "house"
+        ref : "house",
+        required: true
     },
 
     entryTime : {
-        type : String
+        type : String,
+        required: true
     },
 
     exitTime : {

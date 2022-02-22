@@ -4,27 +4,21 @@ const mongoose = require('mongoose')
 let DeliverableSchema = new mongoose.Schema({
     date : {
         type:Date,
-        required:true,
-        
-      
+        required:true,      
     },
 
     isPickup : {
         type : Boolean,
-        required:true
-        
-       
+        required:true      
     },
-
 
     house : {
         type:mongoose.Schema.Types.ObjectId,
-        ref:"house"
+        ref:"house",
+        required: true
     }
-
-},{timestamps: false})
+})
 
 //model
 const DeliverableModel = mongoose.model("deliverable",DeliverableSchema)
 module.exports = DeliverableModel
- 

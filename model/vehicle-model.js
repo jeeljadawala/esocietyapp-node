@@ -20,7 +20,8 @@ let VehicleSchema = new mongoose.Schema(
     },
     user: {
         type: mongoose.Types.ObjectId,
-        ref : "user"
+        ref : "user",
+        required: true
     }
     }
 )

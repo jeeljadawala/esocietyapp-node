@@ -17,12 +17,14 @@ let MemberSchema = new mongoose.Schema({
    
      user: {
         type:mongoose.Schema.Types.ObjectId,
-        ref:"user"
+        ref:"user",
+        required: true
     },
 
     house:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"house"
+        ref:"house",
+        required: true
     }
 
 })

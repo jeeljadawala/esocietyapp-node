@@ -8,7 +8,8 @@ module.exports.addGuard = function (req, res) {         //API
     let guard = new GuardModel({
         scheduleTime: req.body.scheduleTime,
         mobileNo : req.body.mobileNo,
-        guardName : req.body.guardName
+        guardName : req.body.guardName,
+        user:req.body.user,
     })
 
     guard.save(function (err, success) {
@@ -24,7 +25,7 @@ module.exports.addGuard = function (req, res) {         //API
 
 //list
 module.exports.getAllGuards = function (req, res) {
-    GuardModel.find(function (err, guards) {
+    GuardModel.find().populate("user").exec(function (err, guards) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -68,7 +69,7 @@ module.exports.getGuardById = function(req, res){
     
     let guardId = req.params.guardId;
     
-    GuardModel.findById({"_id" : guardId}, function(err, data){
+    GuardModel.findById({"_id" : guardId}).populate("user").exec(function(err, data){
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

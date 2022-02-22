@@ -27,18 +27,21 @@ let ChildScheduleSchema = new mongoose.Schema(
         },
         house:{
             type:mongoose.Schema.Types.ObjectId,
-            ref:"house"
+            ref:"house",
+            required: true
         },
         profilePhoto : {
             type : String
         },
         
         allowedStartingTime : {
-            type : String
+            type : String,
+            required : true
         },
 
         allowedEndingTime : {
-            type : String
+            type : String,
+            required: true
         }
     }
 )

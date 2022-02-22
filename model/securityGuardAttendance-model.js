@@ -8,7 +8,8 @@ let GuardAttendanceSchema = new mongoose.Schema({
     },
     guard : {
         type : mongoose.Schema.Types.ObjectId,
-        ref:"guard"
+        ref:"guard",
+        required: true
     },
     date: {
         type: String,

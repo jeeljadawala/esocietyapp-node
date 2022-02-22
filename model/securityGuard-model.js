@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 let GuardSchema = new mongoose.Schema({
     scheduleTime : {
         type : String,
-        //required: true,
+        required: true,
         maxLength: 300
     },
 
@@ -19,6 +19,13 @@ let GuardSchema = new mongoose.Schema({
         required: true,
         maxLength: 25
     },
+
+    user: {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "user",
+        required : true,
+        unique : true
+    }
 
 })
 
