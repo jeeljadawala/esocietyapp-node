@@ -1,17 +1,13 @@
 Remaining tasks
 -------------------
 set default value in model
-time - entryTime, exitTime in visitor 
-add time in childSchedule
 childSchedule update method not working : because need to update timings and time is not yet added
 addition of profilePhoto
 
 =================================================================================================================
 Doubts -
 
-only date ==> String, 
-Profile photo(img) 
-only time
+
 
 ===========================================================================================================
 Defining documents within documents

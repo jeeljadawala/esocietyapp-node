@@ -56,8 +56,11 @@ module.exports.deleteChildSchedule = function(req, res){
 //update
 module.exports.updateChildSchedule = function(req, res){
     let childScheduleId = req.body.childScheduleId
-    //update schedule time remaining
-    ChildScheduleModel.updateOne({"_id" : childScheduleId},{ }, function(err, data){
+    let allowedStartingTime = req.body.allowedStartingTime
+    let allowedEndingTime = req.body.allowedEndingTime
+   
+    //update schedule time 
+    ChildScheduleModel.updateOne({"_id" : childScheduleId},{ "allowedStartingTime":allowedStartingTime,"allowedEndingTime": allowedEndingTime}, function(err, data){
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

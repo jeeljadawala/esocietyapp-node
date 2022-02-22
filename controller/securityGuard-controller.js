@@ -6,7 +6,7 @@ module.exports.addGuard = function (req, res) {         //API
     //console.log(req.body.roleName)
 
     let guard = new GuardModel({
-        schedule: req.body.schedule,
+        scheduleTime: req.body.scheduleTime,
         mobileNo : req.body.mobileNo,
         guardName : req.body.guardName
     })

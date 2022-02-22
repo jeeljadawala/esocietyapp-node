@@ -6,7 +6,8 @@ module.exports.addGuardAttendance = function (req, res) {         //API
     let guardAttendance = new GuardAttendanceModel({
        
        isPresent : req.body.isPresent,
-       guard : req.body.guard
+       guard : req.body.guard,
+       date : req.body.date
     })
 
     guardAttendance.save(function (err, success) {
@@ -64,7 +65,7 @@ module.exports.updateGuardAttendance = function(req, res){
 //get user by userid
 module.exports.getGuardAttendanceById = function(req, res){
     
-    let guardId = req.params.guardId;
+    let guardId = req.params.guard._id;
     
     GuardAttendanceModel.findById({"guard" : guardId}).populate("guard").exec(function(err, data){
         if (err) {
