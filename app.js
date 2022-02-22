@@ -130,6 +130,6 @@ app.get("/childSchedules/:childScheduleId", childScheduleController.getChildSche
 */
 
 //server jeel
- app.listen(4000,function(){
+ app.listen(3000,function(){
    console.log("server started on 3000");  
  }) 

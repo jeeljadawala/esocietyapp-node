@@ -2,14 +2,16 @@ const mongoose = require('mongoose')
 
 //schema
 let GuardAttendanceSchema = new mongoose.Schema({
-    isPresent: {
-        type : Boolean,
-        required: true    
-    },
+    
     guard : {
         type : mongoose.Schema.Types.ObjectId,
         ref:"guard",
         required: true
+    },
+    isPresent: {
+        type : Boolean,
+        required:true ,
+        default : false
     },
     date: {
         type: String,

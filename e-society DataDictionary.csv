@@ -32,10 +32,12 @@ guardName,,,yes,varchar(20),,
 guardID,primary,,yes,int,yes,yes
 ,,,,,,
 ,,,,,,
+
 security guard attendence,,,,,,
 attendenceID,primary,,yes,int,yes
 security guard Id, foreign, security guard, yes, int,,
 isPresent,,,yes,boolean,
+date
 ,,,,,,
 Vehicle,,,,,,
 MemberID,foreign,Member,yes,int,,
