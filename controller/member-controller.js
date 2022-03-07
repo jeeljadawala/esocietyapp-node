@@ -51,7 +51,7 @@ module.exports.deleteMember = function(req, res){
 
 //update
 module.exports.updateMember = function(req, res){
-    let memberId = req.body.memberId
+    let memberId = req.params.memberId
     let memberName = req.body.memberName
 
     MemberModel.updateOne({"_id" : memberId},{ "memberName" : memberName}, function(err, data){

@@ -55,7 +55,7 @@ module.exports.deleteChildSchedule = function(req, res){
 
 //update
 module.exports.updateChildSchedule = function(req, res){
-    let childScheduleId = req.body.childScheduleId
+    let childScheduleId = req.params.childScheduleId
     let allowedStartingTime = req.body.allowedStartingTime
     let allowedEndingTime = req.body.allowedEndingTime
    

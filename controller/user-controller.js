@@ -57,7 +57,7 @@ module.exports.deleteUser = function(req, res){
 
 //update
 module.exports.updateUser = function(req, res){
-    let userId = req.body.userId
+    let userId = req.params.userId
     let email = req.body.email
 
     UserModel.updateOne({"_id" : userId},{ "email": email}, function(err, data){

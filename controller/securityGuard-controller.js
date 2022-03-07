@@ -51,7 +51,7 @@ module.exports.deleteGuard = function(req, res){
 
 //update
 module.exports.updateGuard = function(req, res){
-    let guardId = req.body.guardId
+    let guardId = req.params.guardId
     let guardName = req.body.guardName
 
     GuardModel.updateOne({"_id" : guardId},{ "guardName": guardName}, function(err, data){

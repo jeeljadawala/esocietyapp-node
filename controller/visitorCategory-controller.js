@@ -44,7 +44,7 @@ module.exports.deleteCategory = function(req, res){
 }
 
 module.exports.updateCategory = function(req, res){
-    let categoryId = req.body.categoryId
+    let categoryId = req.params.categoryId
     let categoryName = req.body.categoryName
 
     CategoryModel.updateOne({"_id" : categoryId},{ "categoryName": categoryName}, function(err, data){

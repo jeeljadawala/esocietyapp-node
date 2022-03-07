@@ -49,7 +49,7 @@ module.exports.deleteVehicle = function(req, res){
 }
 
 module.exports.updateVehicle = function(req, res){
-    let vehicleId = req.body.vehicleId
+    let vehicleId = req.params.vehicleId
     let parkingId = req.body.parkingId
 
     VehicleModel.updateOne({"_id" : vehicleId},{ "parkingId": parkingId}, function(err, data){

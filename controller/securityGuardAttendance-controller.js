@@ -49,7 +49,7 @@ module.exports.deleteGuardAttendance = function(req, res){
 
 //update
 module.exports.updateGuardAttendance = function(req, res){
-    let guardAttendanceId = req.body.guardAttendanceId
+    let guardAttendanceId = req.params.guardAttendanceId
     let isPresent = req.body.isPresent
 
     GuardAttendanceModel.updateOne({"_id" : guardAttendanceId},{ "isPresent": isPresent}, function(err, data){

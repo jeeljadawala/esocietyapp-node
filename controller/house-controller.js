@@ -44,7 +44,7 @@ module.exports.deleteHouse = function(req, res){
 }
 
 module.exports.updateHouse = function(req, res){
-    let houseId = req.body.houseId
+    let houseId = req.params.houseId
     let houseTitle = req.body.houseTitle
 
     HouseModel.updateOne({"_id" : houseId},{ "houseTitle": houseTitle}, function(err, data){

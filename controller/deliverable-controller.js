@@ -52,7 +52,7 @@ module.exports.deleteDeliverable = function(req, res){
 
 //update
 module.exports.updateDeliverable = function(req, res){
-    let deliverableId = req.body.deliverableId
+    let deliverableId = req.params.deliverableId
     let date =req.body.date
 
     DeliverableModel.updateOne({"_id" : deliverableId},{ "date":date}, function(err, data){
