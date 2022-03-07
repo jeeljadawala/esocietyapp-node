@@ -49,7 +49,7 @@ app.post("/login",userController.login)
 app.post("/roles",roleController.addRole)
 app.get("/roles",roleController.getAllRoles)
 app.delete("/roles/:roleId",roleController.deleteRole)
-app.put("/roles",roleController.updateRole)
+app.put("/roles/:roleId",roleController.updateRole)
 app.get("/roles/:roleId", roleController.getRoleById)
 
 //user
@@ -127,13 +127,7 @@ app.put("/childSchedules", childScheduleController.updateChildSchedule)
 app.get("/childSchedules/:childScheduleId", childScheduleController.getChildScheduleById)
 
 
-//server keya
-/*app.listen(4000,function(){
-  console.log("server started on 4000");  
-})
-*/
 
-//server jeel
  app.listen(4000,function(){
    console.log("server started on 4000");  
  }) 
