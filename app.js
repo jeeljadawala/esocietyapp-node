@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require('mongoose')
+var cors = require('cors')
 
 const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
@@ -19,6 +20,9 @@ const app = express()
 app.use(express.json()) //mobile -> accept json data from request and set data into body 
 app.use(express.urlencoded({extended:true})) //web --> accept url encoded data from request and set data into body  
 
+
+//cors
+app.use(cors())
 
 //database
 
@@ -130,6 +134,6 @@ app.get("/childSchedules/:childScheduleId", childScheduleController.getChildSche
 */
 
 //server jeel
- app.listen(3000,function(){
-   console.log("server started on 3000");  
+ app.listen(4000,function(){
+   console.log("server started on 4000");  
  }) 
