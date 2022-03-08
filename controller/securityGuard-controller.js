@@ -15,7 +15,7 @@ module.exports.addGuard = function (req, res) {         //API
     guard.save(function (err, success) {
         if (err) {
             console.log(err);
-            res.json({ msg: "Something Went Wrong", status: -1, data: data.err })
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
             res.json({ msg: "guard added successfully", status: 200, data: success })
