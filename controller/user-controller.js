@@ -59,8 +59,16 @@ module.exports.deleteUser = function(req, res){
 module.exports.updateUser = function(req, res){
     let userId = req.params.userId
     let email = req.body.email
+    let password = bcrypt.hashSync(req.body.password,10)
+    let mobileNo = req.body.mobileNo
+       let firstName = req.body.firstName
+    let lastName = req.body.lastName
+      let  role= req.body.role
+       let profilePhoto = req.body.profilePhoto
 
-    UserModel.updateOne({"_id" : userId},{ "email": email}, function(err, data){
+
+    UserModel.updateOne({"_id" : userId},{ "email": email,"password":password,"mobileNo":mobileNo
+,"firstName":firstName,"lastName":lastName,"profilePhoto":profilePhoto}, function(err, data){
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

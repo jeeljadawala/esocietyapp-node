@@ -53,8 +53,9 @@ module.exports.deleteMember = function(req, res){
 module.exports.updateMember = function(req, res){
     let memberId = req.params.memberId
     let memberName = req.body.memberName
+    let age=req.body.age
 
-    MemberModel.updateOne({"_id" : memberId},{ "memberName" : memberName}, function(err, data){
+    MemberModel.updateOne({"_id" : memberId},{ "memberName" : memberName,"age":age}, function(err, data){
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
