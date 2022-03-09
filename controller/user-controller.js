@@ -21,7 +21,7 @@ module.exports.addUser = function (req, res) {         //API
     user.save(function (err, success) {
         if (err) {
             console.log(err);
-            res.json({ msg: "Something Went Wrong", status: -1, data: data.err })
+            res.json({ msg: "Something Went Wrong", status: -1, data : err })
         }
         else {
             res.json({ msg: "user added successfully", status: 200, data: success })
