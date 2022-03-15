@@ -15,7 +15,7 @@ module.exports.addMember = function (req, res) {         //API
     member.save(function (err, success) {
         if (err) {
             console.log(err);
-            res.json({ msg: "Something Went Wrong", status: -1, data: data.err })
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
             res.json({ msg: "member added successfully", status: 200, data: success })
