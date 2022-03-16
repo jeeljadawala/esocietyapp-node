@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 //schema
 let DeliverableSchema = new mongoose.Schema({
     date : {
-        type:Date,
+        type:String,
         required:true,      
     },
 
