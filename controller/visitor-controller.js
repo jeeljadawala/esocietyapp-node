@@ -5,17 +5,17 @@ module.exports.addVisitor = function (req, res) {         //API
     //db insert visitor
 
     let visitor = new VisitorModel({
-        visitorName : req.body.visitorName,
-        purpose : req.body.purpose,
-        date : req.body.date,
-        isAllowed : req.body.isAllowed,
-        isPreScheduled : req.body.isPreScheduled,
-        mobileNo : req.body.mobileNo,
-        visitorCategory : req.body.visitorCategory,
-        house : req.body.house,
-        profilePhoto : req.body.profilePhoto,
-        entryTime : req.body.entryTime,
-        exitTime : req.body.exitTime
+        visitorName: req.body.visitorName,
+        purpose: req.body.purpose,
+        date: req.body.date,
+        isAllowed: req.body.isAllowed,
+        isPreScheduled: req.body.isPreScheduled,
+        mobileNo: req.body.mobileNo,
+        visitorCategory: req.body.visitorCategory,
+        house: req.body.house,
+        profilePhoto: req.body.profilePhoto,
+        entryTime: req.body.entryTime,
+        exitTime: req.body.exitTime
     })
 
     visitor.save(function (err, success) {
@@ -42,10 +42,10 @@ module.exports.getAllVisitors = function (req, res) {
 }
 
 //delete
-module.exports.deleteVisitor = function(req, res){
+module.exports.deleteVisitor = function (req, res) {
 
     let visitorId = req.params.visitorId
-    VisitorModel.deleteOne({"_id" : visitorId}, function(err, data){
+    VisitorModel.deleteOne({ "_id": visitorId }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -56,11 +56,21 @@ module.exports.deleteVisitor = function(req, res){
 }
 
 //update
-module.exports.updateVisitor = function(req, res){
+module.exports.updateVisitor = function (req, res) {
     let visitorId = req.params.visitorId
     let visitorName = req.body.visitorName
+    let purpose = req.body.purpose
+    let entryTime = req.body.entryTime
+    let exitTime = req.body.exitTime
+    let mobileNo = req.body.mobileNo
+    let isAllowed = req.body.isAllowed
+    let isPreScheduled = req.body.isPreScheduled
+    let date = req.body.date
 
-    VisitorModel.updateOne({"_id" : visitorId},{ "visitorName" : visitorName}, function(err, data){
+    VisitorModel.updateOne({ "_id": visitorId }, {
+        "visitorName": visitorName, "purpose": purpose, "entryTime": entryTime,
+        "exitTime": exitTime, "date": date, "isAllowed": isAllowed, "isPreScheduled": isPreScheduled, "mobileNo": mobileNo
+    }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -71,11 +81,11 @@ module.exports.updateVisitor = function(req, res){
 }
 
 //get visitor by visitorId
-module.exports.getVisitorById = function(req, res){
-    
+module.exports.getVisitorById = function (req, res) {
+
     let visitorId = req.params.visitorId;
-    
-    VisitorModel.findById({"_id" : visitorId}, function(err, data){
+
+    VisitorModel.findById({ "_id": visitorId }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
