@@ -78,3 +78,20 @@ module.exports.getGuardById = function(req, res){
         }
     })
 }
+
+//find guard by email
+module.exports.findGuardByUser = function (req, res) {
+    let param_user = req.body.user
+
+    console.log("user id : ", param_user)
+
+    GuardModel.findOne({ user: param_user }, function (err, data) {
+        if (err) {
+            res.json({ msg: "guard with given user id not found", status: -1, data: err })
+        }
+        else {
+            console.log("guard id : ", data._id)
+            res.json({ msg: "guard is found successfully", status: 200, data: data, id : data._id })
+        }
+    })
+}

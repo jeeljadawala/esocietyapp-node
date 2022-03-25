@@ -3,64 +3,46 @@ const bcrypt = require("bcrypt")
 
 //add
 module.exports.addUser = function (req, res) {         //API
-    
+
     console.log(req.body.firstName)
 
-    // if (req.body.firstName == undefined) {
-    //     let param_email = req.body.email
-        
-    //     console.log("param email", param_email)
+    let encryptedPassword = bcrypt.hashSync(req.body.password, 10)
 
-    //     UserModel.findOne({ email: param_email }, function (err, data) {
-    //         if (err) {
-    //             res.json({ msg: "user with given mail id not found", status: -1, data: err })
-    //         }
-    //         else {
-    //             res.json({ msg: "user is found successfully", status: 200, data: data })
-    //         }
-    //     })
-    // }
-    // else {
-         let encryptedPassword = bcrypt.hashSync(req.body.password, 10)
+    let user = new UserModel({
+        email: req.body.email,
+        password: encryptedPassword,
+        mobileNo: req.body.mobileNo,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        role: req.body.role,
+        profilePhoto: "http://localhost:4000/images/" + req.body.profilePhoto
+    })
 
-        let user = new UserModel({
-            email: req.body.email,
-            password: encryptedPassword,
-            mobileNo: req.body.mobileNo,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            role: req.body.role,
-            profilePhoto: "http://localhost:4000/images/"+req.body.profilePhoto
-        })
-
-        user.save(function (err, success) {
-            if (err) {
-                console.log(err);
-                res.json({ msg: "Something Went Wrong", status: -1, data: err })
-            }
-            else {
-                res.json({ msg: "user added successfully", status: 200, data: success })
-            }
-        })
-   // }
+    user.save(function (err, success) {
+        if (err) {
+            console.log(err);
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
+        }
+        else {
+            res.json({ msg: "user added successfully", status: 200, data: success })
+        }
+    })
 }
 
 //find user by email
-module.exports.findUserByEmail = function(req,res){
+module.exports.findUserByEmail = function (req, res) {
     let param_email = req.body.email
-        
-        console.log("param email", param_email)
 
-        UserModel.findOne({ email : param_email }, function (err, data) {
-            if (err) {
-                res.json({ msg: "user with given mail id not found", status: -1, data: err })
-            }
-            else {
-                res.json({ msg: "user is found successfully", status: 200, data: data})
-            }
-        })
-   
+    console.log("param email", param_email)
 
+    UserModel.findOne({ email: param_email }, function (err, data) {
+        if (err) {
+            res.json({ msg: "user with given mail id not found", status: -1, data: err })
+        }
+        else {
+            res.json({ msg: "user is found successfully", status: 200, data: data})
+        }
+    })
 }
 
 //list
@@ -155,7 +137,8 @@ module.exports.login = function (req, res) {
         if (isCorrect == false) {
             res.json({ msg: "Invalid Credentials...", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
-            res.json({ msg: "Login....", data: data, status: 200, id: data._id })//http status code 
+            console.log("user id : ",data._id)
+            res.json({ msg: "Login....", data: data, status: 200, id : data._id })//http status code 
         }
     })
 }

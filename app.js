@@ -51,10 +51,6 @@ app.get("/",function(req,res){
 //login
 app.post("/login",userController.login)
 
-//forgot password
-app.put("/users/:userId", userController.updateUser)
-
-
 //role 
 app.post("/roles",roleController.addRole)
 app.get("/roles",roleController.getAllRoles)
@@ -92,6 +88,7 @@ app.get("/guards", guardController.getAllGuards)
 app.delete("/guards/:guardId", guardController.deleteGuard)
 app.put("/guards/:guardId", guardController.updateGuard)
 app.get("/guards/:guardId", guardController.getGuardById)
+app.post("/guardAttendance", guardController.findGuardByUser)
 
 
 //security guard attendence
