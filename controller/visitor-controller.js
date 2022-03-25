@@ -13,7 +13,7 @@ module.exports.addVisitor = function (req, res) {         //API
         mobileNo: req.body.mobileNo,
         visitorCategory: req.body.visitorCategory,
         house: req.body.house,
-        profilePhoto: req.body.profilePhoto,
+        profilePhoto: "http://localhost:4000/images/"+req.body.profilePhoto,
         entryTime: req.body.entryTime,
         exitTime: req.body.exitTime
     })
