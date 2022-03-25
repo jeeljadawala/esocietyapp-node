@@ -25,12 +25,9 @@ app.use(express.urlencoded({extended:true})) //web --> accept url encoded data f
 app.use(cors())
 
 //for loading images
-var publicDir = require('path').join(__dirname+'/public')
+var publicDir = require('path').join(__dirname  ,'/public')
 app.use(express.static(publicDir))
 
-app.get('/',function(req,res){
-  res.sendFile(__dirname + 'index.html')
-})
 
 //database
 
@@ -72,7 +69,6 @@ app.delete("/users/:userId", userController.deleteUser)
 app.put("/users/:userId", userController.updateUser)
 app.get("/users/:userId", userController.getUserById)
 
-app.get("/users/623d421885da90f56803cb2e/D:/esociety_images/2.png")
 
 
 //house
