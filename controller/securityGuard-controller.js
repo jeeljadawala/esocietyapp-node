@@ -79,7 +79,7 @@ module.exports.getGuardById = function(req, res){
     })
 }
 
-//find guard by email
+//find guard by user
 module.exports.findGuardByUser = function (req, res) {
     let param_user = req.body.user
 
