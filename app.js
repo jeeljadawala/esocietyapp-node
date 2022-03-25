@@ -24,6 +24,14 @@ app.use(express.urlencoded({extended:true})) //web --> accept url encoded data f
 //cors
 app.use(cors())
 
+//for loading images
+var publicDir = require('path').join(__dirname+'/public')
+app.use(express.static(publicDir))
+
+app.get('/',function(req,res){
+  res.sendFile(__dirname + 'index.html')
+})
+
 //database
 
 mongoose.connect('mongodb://localhost:27017/esociety',function(err){
@@ -35,6 +43,8 @@ mongoose.connect('mongodb://localhost:27017/esociety',function(err){
   }
 })
 
+
+
 //urls
 app.get("/",function(req,res){
     res.write("welcome...")
@@ -43,6 +53,9 @@ app.get("/",function(req,res){
 
 //login
 app.post("/login",userController.login)
+
+//forgot password
+app.put("/users/:userId", userController.updateUser)
 
 
 //role 
@@ -58,6 +71,8 @@ app.get("/users", userController.getAllUsers)
 app.delete("/users/:userId", userController.deleteUser)
 app.put("/users/:userId", userController.updateUser)
 app.get("/users/:userId", userController.getUserById)
+
+app.get("/users/623d421885da90f56803cb2e/D:/esociety_images/2.png")
 
 
 //house

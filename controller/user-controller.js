@@ -3,30 +3,46 @@ const bcrypt = require("bcrypt")
 
 //add
 module.exports.addUser = function (req, res) {         //API
-    //db insert role
-    //console.log(req.body.roleName)
+    
+    console.log(req.body.firstName)
 
-    let encryptedPassword = bcrypt.hashSync(req.body.password, 10)
+    if (req.body.firstName == undefined) {
+        let param_email = req.body.email
+        
+        console.log("param email", param_email)
 
-    let user = new UserModel({
-        email: req.body.email,
-        password: encryptedPassword,
-        mobileNo: req.body.mobileNo,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        role: req.body.role,
-        profilePhoto: req.body.profilePhoto
-    })
+        UserModel.findOne({ email: param_email }, function (err, data) {
+            if (err) {
+                res.json({ msg: "user with given mail id not found", status: -1, data: err })
+            }
+            else {
+                res.json({ msg: "user is found successfully", status: 200, data: data })
+            }
+        })
+    }
+    else {
+        let encryptedPassword = bcrypt.hashSync(req.body.password, 10)
 
-    user.save(function (err, success) {
-        if (err) {
-            console.log(err);
-            res.json({ msg: "Something Went Wrong", status: -1, data: err })
-        }
-        else {
-            res.json({ msg: "user added successfully", status: 200, data: success })
-        }
-    })
+        let user = new UserModel({
+            email: req.body.email,
+            password: encryptedPassword,
+            mobileNo: req.body.mobileNo,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            role: req.body.role,
+            profilePhoto: "localhost:4000/"+req.body.profilePhoto
+        })
+
+        user.save(function (err, success) {
+            if (err) {
+                console.log(err);
+                res.json({ msg: "Something Went Wrong", status: -1, data: err })
+            }
+            else {
+                res.json({ msg: "user added successfully", status: 200, data: success })
+            }
+        })
+    }
 }
 
 //list
@@ -66,11 +82,9 @@ module.exports.updateUser = function (req, res) {
     let role = req.body.role
     let profilePhoto = req.body.profilePhoto
 
-
-
     UserModel.updateOne({ "_id": userId },
         {
-            "email": email, "password": password, "mobileNo": mobileNo
+            "email": email, "mobileNo": mobileNo, "password": password
             , "firstName": firstName, "lastName": lastName, "profilePhoto": profilePhoto, "role": role
         }, function (err, data) {
             if (err) {
@@ -94,6 +108,8 @@ module.exports.getUserById = function (req, res) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
+            //data.password = bcrypt.data.password
+            //password : bcrypt.data.password
             res.json({ msg: "user is found successfully", status: 200, data: data })
         }
     })
@@ -108,12 +124,12 @@ module.exports.login = function (req, res) {
 
     let isCorrect = false;
 
-    UserModel.findOne({ email: param_email}, function (err, data) {
+    UserModel.findOne({ email: param_email }, function (err, data) {
         if (data) {
             let ans = bcrypt.compareSync(param_password, data.password)
             if (ans == true) {
-                if(data.role == param_role){
-                isCorrect = true
+                if (data.role == param_role) {
+                    isCorrect = true
                 }
             }
         }
