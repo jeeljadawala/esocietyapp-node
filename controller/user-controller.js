@@ -6,22 +6,22 @@ module.exports.addUser = function (req, res) {         //API
     
     console.log(req.body.firstName)
 
-    if (req.body.firstName == undefined) {
-        let param_email = req.body.email
+    // if (req.body.firstName == undefined) {
+    //     let param_email = req.body.email
         
-        console.log("param email", param_email)
+    //     console.log("param email", param_email)
 
-        UserModel.findOne({ email: param_email }, function (err, data) {
-            if (err) {
-                res.json({ msg: "user with given mail id not found", status: -1, data: err })
-            }
-            else {
-                res.json({ msg: "user is found successfully", status: 200, data: data })
-            }
-        })
-    }
-    else {
-        let encryptedPassword = bcrypt.hashSync(req.body.password, 10)
+    //     UserModel.findOne({ email: param_email }, function (err, data) {
+    //         if (err) {
+    //             res.json({ msg: "user with given mail id not found", status: -1, data: err })
+    //         }
+    //         else {
+    //             res.json({ msg: "user is found successfully", status: 200, data: data })
+    //         }
+    //     })
+    // }
+    // else {
+         let encryptedPassword = bcrypt.hashSync(req.body.password, 10)
 
         let user = new UserModel({
             email: req.body.email,
@@ -42,7 +42,25 @@ module.exports.addUser = function (req, res) {         //API
                 res.json({ msg: "user added successfully", status: 200, data: success })
             }
         })
-    }
+   // }
+}
+
+//find user by email
+module.exports.findUserByEmail = function(req,res){
+    let param_email = req.body.email
+        
+        console.log("param email", param_email)
+
+        UserModel.findOne({ email : param_email }, function (err, data) {
+            if (err) {
+                res.json({ msg: "user with given mail id not found", status: -1, data: err })
+            }
+            else {
+                res.json({ msg: "user is found successfully", status: 200, data: data})
+            }
+        })
+   
+
 }
 
 //list

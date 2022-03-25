@@ -68,6 +68,7 @@ app.get("/users", userController.getAllUsers)
 app.delete("/users/:userId", userController.deleteUser)
 app.put("/users/:userId", userController.updateUser)
 app.get("/users/:userId", userController.getUserById)
+app.post("/forgotpwd",userController.findUserByEmail)
 
 
 
