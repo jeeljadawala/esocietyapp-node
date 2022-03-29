@@ -4,10 +4,10 @@ const GuardAttendanceModel = require("../model/securityGuardAttendance-model")
 module.exports.addGuardAttendance = function (req, res) {         //API
 
     let guardAttendance = new GuardAttendanceModel({
-       
-       isPresent : req.body.isPresent,
-       guard : req.body.guard,
-       date : req.body.date
+
+        isPresent: req.body.isPresent,
+        guard: req.body.guard,
+        date: req.body.date
     })
 
     guardAttendance.save(function (err, success) {
@@ -34,10 +34,10 @@ module.exports.getAllGuardAttendances = function (req, res) {
 }
 
 //delete
-module.exports.deleteGuardAttendance = function(req, res){
+module.exports.deleteGuardAttendance = function (req, res) {
 
     let guardAttendanceId = req.params.guardAttendanceId
-    GuardAttendanceModel.deleteOne({"_id" : guardAttendanceId}, function(err, data){
+    GuardAttendanceModel.deleteOne({ "_id": guardAttendanceId }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -48,11 +48,11 @@ module.exports.deleteGuardAttendance = function(req, res){
 }
 
 //update
-module.exports.updateGuardAttendance = function(req, res){
+module.exports.updateGuardAttendance = function (req, res) {
     let guardAttendanceId = req.params.guardAttendanceId
     let isPresent = req.body.isPresent
 
-    GuardAttendanceModel.updateOne({"_id" : guardAttendanceId},{ "isPresent": isPresent}, function(err, data){
+    GuardAttendanceModel.updateOne({ "_id": guardAttendanceId }, { "isPresent": isPresent }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -63,11 +63,11 @@ module.exports.updateGuardAttendance = function(req, res){
 }
 
 //get guard attendance record by guard attendance id
-module.exports.getGuardAttendanceById = function(req, res){
-    
+module.exports.getGuardAttendanceById = function (req, res) {
+
     let guardAttendanceId = req.params.guardAttendanceId;
-    
-    GuardAttendanceModel.findById({"_id" : guardAttendanceId}).populate("guard").exec(function(err, data){
+
+    GuardAttendanceModel.findById({ "_id": guardAttendanceId }).populate("guard").exec(function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -81,16 +81,19 @@ module.exports.getGuardAttendanceById = function(req, res){
 
 module.exports.getAttendance = function (req, res) {
     let param_guardid = req.body.guard
+    if (param_guardid !== undefined) {
 
-    console.log("guard id : ", param_guardid)
+        console.log("guard id : ", param_guardid)
 
-    GuardAttendanceModel.count({ guard : param_guardid}, function (err, data) {
-        if (err) {
-            res.json({ msg: "guard attendances with given guard id not found", status: -1, data: err })
-        }
-        else {
-            console.log("guard id : ", data._id)
-            res.json({ msg: "guard attendance is found successfully", status: 200, data: data, id : data._id })
-        }
-    })
+        GuardAttendanceModel.count({ guard: param_guardid }, function (err, data) {
+            if (err) {
+                console.log("guard id in if")
+                res.json({ msg: "guard attendances with given guard id not found", status: -1, data: err })
+            }
+            else {
+                console.log("guard id in else : ", data._id)
+                res.json({ msg: "guard attendance is found successfully", status: 200, data: data, id: data._id })
+            }
+        })
+    }
 }
