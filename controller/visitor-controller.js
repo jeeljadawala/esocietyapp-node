@@ -15,7 +15,8 @@ module.exports.addVisitor = function (req, res) {         //API
         house: req.body.house,
         profilePhoto: "http://localhost:4000/images/"+req.body.profilePhoto,
         entryTime: req.body.entryTime,
-        exitTime: req.body.exitTime
+        exitTime: req.body.exitTime,
+        guard : req.body.guard
     })
 
     visitor.save(function (err, success) {
@@ -31,7 +32,7 @@ module.exports.addVisitor = function (req, res) {         //API
 
 //list
 module.exports.getAllVisitors = function (req, res) {
-    VisitorModel.find().populate("visitorCategory").populate("house").exec(function (err, visitors) {
+    VisitorModel.find().populate("visitorCategory").populate("house").populate("guard").exec(function (err, visitors) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

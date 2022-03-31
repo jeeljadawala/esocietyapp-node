@@ -58,6 +58,13 @@ let VisitorSchema = new mongoose.Schema({
 
     exitTime : {
         type : String
+    },
+
+    guard : {
+type : mongoose.Schema.Types.ObjectId,
+ref : "guard",
+//required: true
+
     }
 
 })
