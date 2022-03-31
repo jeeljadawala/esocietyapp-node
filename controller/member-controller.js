@@ -3,13 +3,13 @@ const MemberModel = require("../model/member-model")
 //add
 module.exports.addMember = function (req, res) {         //API
     //db insert role
-   
+
 
     let member = new MemberModel({
-      memberName:req.body.memberName,
-    age: req.body.age,
-    user:req.body.user,
-    house:req.body.house
+        memberName: req.body.memberName,
+        age: req.body.age,
+        user: req.body.user,
+        house: req.body.house
     })
 
     member.save(function (err, success) {
@@ -36,10 +36,10 @@ module.exports.getAllMembers = function (req, res) {
 }
 
 //delete
-module.exports.deleteMember = function(req, res){
+module.exports.deleteMember = function (req, res) {
 
     let memberId = req.params.memberId
-    MemberModel.deleteOne({"_id" : memberId}, function(err, data){
+    MemberModel.deleteOne({ "_id": memberId }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -50,12 +50,12 @@ module.exports.deleteMember = function(req, res){
 }
 
 //update
-module.exports.updateMember = function(req, res){
+module.exports.updateMember = function (req, res) {
     let memberId = req.params.memberId
     let memberName = req.body.memberName
-    let age=req.body.age
+    let age = req.body.age
 
-    MemberModel.updateOne({"_id" : memberId},{ "memberName" : memberName,"age":age}, function(err, data){
+    MemberModel.updateOne({ "_id": memberId }, { "memberName": memberName, "age": age }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -66,11 +66,11 @@ module.exports.updateMember = function(req, res){
 }
 
 //get Member by Memberid
-module.exports.getMemberById = function(req, res){
-    
+module.exports.getMemberById = function (req, res) {
+
     let memberId = req.params.memberId;
-    
-    MemberModel.findById({"_id" : memberId}, function(err, data){
+
+    MemberModel.findById({ "_id": memberId }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }

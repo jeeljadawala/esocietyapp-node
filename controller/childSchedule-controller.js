@@ -11,7 +11,7 @@ module.exports.addChildSchedule = function (req, res) {         //API
     contactName : req.body.contactName,
     contactNo: req.body.contactNo,
     house:req.body.house,
-    profilePhoto : req.body.profilePhoto,
+    profilePhoto : "http://localhost:4000/images/" + req.body.profilePhoto,
     allowedStartingTime : req.body.allowedStartingTime,
     allowedEndingTime : req.body.allowedEndingTime
     })
