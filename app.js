@@ -1,10 +1,6 @@
 const express = require("express")
-const path = require('path');
-const nodemailer = require('nodemailer');
 const mongoose = require('mongoose')
 var cors = require('cors')
-
-const buildPath = path.join(__dirname, '..', 'build');
 
 const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
@@ -54,6 +50,9 @@ app.get("/",function(req,res){
 
 //login
 app.post("/login",userController.login)
+
+//send mail
+app.post('/sendmail', userController.verifyEmail) 
 
 //role 
 app.post("/roles",roleController.addRole)
@@ -139,51 +138,6 @@ app.get("/childSchedules", childScheduleController.getAllChildSchedules)
 app.delete("/childSchedules/:childScheduleId", childScheduleController.deleteChildSchedule)
 app.put("/childSchedules/:childScheduleId", childScheduleController.updateChildSchedule)
 app.get("/childSchedules/:childScheduleId", childScheduleController.getChildScheduleById)
-
-
-
-//send mail
-app.post('/sendmail',(req,res)=>{
- 
-  var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'esociety.mern@gmail.com',
-        pass: 'eSociety4.'
-      }
-  });
-
-  var mailOptions = {
-      from: 'esociety.mern@gmail.com',// sender address
-      to: req.body.to, // list of receivers
-      subject: req.body.subject, // Subject line
-      text:req.body.description,
-      html: `
-      <div style="padding:10px;border-style: ridge">
-      <p>You have a new contact request.</p>
-      <h3>Contact Details</h3>
-      <ul>
-          <li>Email: ${req.body.to}</li>
-          <li>Subject: ${req.body.subject}</li>
-          <li>Message: ${req.body.description}</li>
-      </ul>
-      `
-      
-  };
-   
-  transporter.sendMail(mailOptions, function(error, info){
-      if (error)
-      {
-        res.json({status: true, respMesg: 'Email Sent Successfully', data: error})
-      } 
-      else
-      {
-        console.log("mail sent")
-        res.json({status: true, respMesg: 'Email Sent Successfully', data : info})
-      }
-   
-    });
-});
 
 
  app.listen(4000,function(){

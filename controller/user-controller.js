@@ -1,5 +1,6 @@
 const UserModel = require("../model/user-model")
 const bcrypt = require("bcrypt")
+const nodemailer = require('nodemailer');
 
 //add
 module.exports.addUser = function (req, res) {         //API
@@ -40,7 +41,7 @@ module.exports.findUserByEmail = function (req, res) {
             res.json({ msg: "user with given mail id not found", status: -1, data: err })
         }
         else {
-            res.json({ msg: "user is found successfully", status: 200, data: data})
+            res.json({ msg: "user is found successfully", status: 200, data: data })
         }
     })
 }
@@ -84,11 +85,11 @@ module.exports.updateUser = function (req, res) {
 
     UserModel.updateOne({ "_id": userId },
         {
-            "email": email, "mobileNo": mobileNo, 
+            "email": email, "mobileNo": mobileNo,
             //"password": password
-             "firstName": firstName, "lastName": lastName
-             //"profilePhoto": profilePhoto
-             //, "role": role
+            "firstName": firstName, "lastName": lastName
+            //"profilePhoto": profilePhoto
+            //, "role": role
         }, function (err, data) {
             if (err) {
                 res.json({ msg: "Something Went Wrong", status: -1, data: err })
@@ -140,8 +141,49 @@ module.exports.login = function (req, res) {
         if (isCorrect == false) {
             res.json({ msg: "Invalid Credentials...", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
-            console.log("user id : ",data._id)
-            res.json({ msg: "Login....", data: data, status: 200, id : data._id })//http status code 
+            console.log("user id : ", data._id)
+            res.json({ msg: "Login....", data: data, status: 200, id: data._id })//http status code 
         }
     })
+}
+
+//verify mail address
+module.exports.verifyEmail = function (req, res) {
+
+    console.log("verify email api called")
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'esociety.mern@gmail.com',
+            pass: 'eSociety4.'
+        }
+    });
+
+    var mailOptions = {
+        from: 'esociety.mern@gmail.com',// sender address
+        to: req.body.email, // list of receivers
+        subject: "To verify given email address", // Subject line
+        text: "Your verification code is " + req.body.otp,
+        html: `
+        <div style="padding:10px;border-style: ridge">
+        <p>You requested to create a new account for using esociety web application.</p>
+        <h3>Enter below otp in Form</h3>
+        <ul>
+            <li>OTP: ${req.body.otp}</li>
+        </ul>
+        `
+    };
+
+    console.log("otp received : ",req.body.otp)
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            res.json({ status: true, respMesg: 'Email Sent Successfully', data: error })
+        }
+        else {
+            console.log("mail sent")
+            res.json({ status: true, respMesg: 'Email Sent Successfully', data: info })
+        }
+
+    }) 
 }
