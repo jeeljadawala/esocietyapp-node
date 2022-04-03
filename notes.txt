@@ -18,6 +18,10 @@ This will allow you to interact very easily with subdocuments later on.
 =========================================================================================
 References - 
 
-https://chaduvulaprasanth.netlify.app/user-signin-signup-using-phone-number-otp-in-mern-stack
-https://www.npmjs.com/package/sendotp
-https://help.msg91.com/article/379-where-can-i-find-my-authentication-key
+https://kumarabhirup.me/writings/google-recaptcha-react-node-js
+https://github.com/KumarAbhirup/kumarabhirup/blob/0f883462652afc521d4938e1f06f0128f233e29f/src/components/mobirise/Contact.js#L270
+https://github.com/KumarAbhirup/kumarabhirup-backend/blob/d0b9daa97e724c428ebdf3728f475d35ee7370de/src/resolvers/Mutation.js#L44
+
+google recaptcha link - https://www.google.com/recaptcha/admin/site/524283504
+
+phone no. validation - https://firebase.google.com/docs/auth/web/phone-auth?authuser=0&hl=en

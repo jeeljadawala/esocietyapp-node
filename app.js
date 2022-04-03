@@ -47,6 +47,8 @@ mongoose.connect('mongodb://localhost:27017/esociety',function(err){
 
 
 
+
+
 //urls
 app.get("/",function(req,res){
     res.write("welcome...")

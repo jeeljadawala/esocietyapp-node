@@ -1,6 +1,8 @@
 const UserModel = require("../model/user-model")
 const bcrypt = require("bcrypt")
-const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer')
+require("es6-promise").polyfill()
+require("isomorphic-fetch")
 
 //const SendOtpMsg = require("sendotp");
 
@@ -127,6 +129,36 @@ module.exports.login = function (req, res) {
     let param_email = req.body.email
     let param_password = req.body.password
     let param_role = req.body.role
+    let param_captcha = req.body.captcha
+
+    // Install 'es6-promise' and 'isomorphic-fetch' from NPM or Yarn.
+    //secret key = 6Ldw7j8fAAAAAJ8DclrU1CAsY_o7dXR7fJqX0jtl
+    const RECAPTCHA_SERVER_KEY = process.env.RECAPTCHA_SERVER_KEY
+
+    const humanKey = param_captcha
+
+    // Validate Human
+    //await
+    const isHuman = fetch(`https://www.google.com/recaptcha/api/siteverify`, {
+        method: "post",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
+        },
+        body: `secret=${RECAPTCHA_SERVER_KEY}&response=${humanKey}`
+    })
+        .then(res => res.json())
+        .then(json => json.success)
+        .catch(err => {
+            throw new Error(`Error in Google Siteverify API. ${err.message}`)
+        })
+
+    if (humanKey === null || !isHuman) {
+        throw new Error(`YOU ARE NOT A HUMAN.`)
+    }
+
+    // The code below will run only after the reCAPTCHA is succesfully validated.
+    console.log("SUCCESS!")
 
     let isCorrect = false;
 
@@ -177,7 +209,7 @@ module.exports.verifyEmail = function (req, res) {
         `
     };
 
-    console.log("otp received : ",req.body.otp)
+    console.log("otp received : ", req.body.otp)
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             res.json({ status: true, respMesg: 'Email Sent Successfully', data: error })
@@ -187,7 +219,7 @@ module.exports.verifyEmail = function (req, res) {
             res.json({ status: true, respMesg: 'Email Sent Successfully', data: info })
         }
 
-    }) 
+    })
 }
 
 
@@ -218,17 +250,17 @@ module.exports.verifyEmail = function (req, res) {
 //     sendOtpMsg.verify(req.body.mobileNo, req.body.otp, function(err, data) {
 //         if (err) {
 //             res.json({ msg: "something went wrong", status: -1, data: err })
-     
+
 //         }
 //         if (data.type == "success") {
-           
+
 //             UserModel.findOne({ mobileNo: req.body.mobileNo }, (err, user) => {
 //                 if (err) return  res.json({ data : err });
 //                 if (user) {
 //                     res.json({ msg: "otp verified successfully", status: 200, data: data })
 
 //                 }
-                
+
 //             });
 //         }
 //         if (data.type == "error") res.json({ success:  false, message:  data.message });
