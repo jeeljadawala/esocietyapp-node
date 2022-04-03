@@ -1,6 +1,11 @@
 const express = require("express")
 const mongoose = require('mongoose')
 var cors = require('cors')
+const SendOtp = require('sendotp');
+
+//Initialize with your MSG91 auth key
+const sendOtp = new SendOtp('AuthKey');
+
 
 const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
