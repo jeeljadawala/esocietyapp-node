@@ -1,10 +1,10 @@
 const express = require("express")
 const mongoose = require('mongoose')
 var cors = require('cors')
-const SendOtp = require('sendotp');
+// const SendOtpMsg = require('sendotp');
 
-//Initialize with your MSG91 auth key
-const sendOtp = new SendOtp('AuthKey');
+// //Initialize with your MSG91 auth key
+// const sendOtpMsg = new SendOtpMsg('AuthKey');
 
 
 const roleController = require("./controller/role-controller")
@@ -73,6 +73,12 @@ app.delete("/users/:userId", userController.deleteUser)
 app.put("/users/:userId", userController.updateUser)
 app.get("/users/:userId", userController.getUserById)
 app.post("/forgotpwd",userController.findUserByEmail)
+
+// // send otp
+// app.post("/sendotpmsg", userController.SENDOTPMSG);
+// // verify otp
+// app.post("/verifyotpmsg", userController.VERIFYOTPMSG);
+
 
 
 

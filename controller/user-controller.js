@@ -2,6 +2,8 @@ const UserModel = require("../model/user-model")
 const bcrypt = require("bcrypt")
 const nodemailer = require('nodemailer');
 
+//const SendOtpMsg = require("sendotp");
+
 //add
 module.exports.addUser = function (req, res) {         //API
 
@@ -187,3 +189,49 @@ module.exports.verifyEmail = function (req, res) {
 
     }) 
 }
+
+
+
+
+
+
+// // pass your msg91 otp creditials SendOtp
+// const  sendOtpMsg = new  SendOtpMsg("****otpcredentials****");
+
+// // send otp for sending otp to entered phone number and also pass message sender name like app name from your credintials
+// const SENDOTPMSG = (req,res) => {
+//     sendOtpMsg.send(req.body.mobileNo, "***senderID***", (err, data) => {
+//         if (err) {
+//             res.json({ msg: "Something Went Wrong", status: -1, data: err })
+//         }
+//         else {
+//            res.json({ msg: "msg send successfully", status: 200, data: data })
+//         }    
+//         data.type == "success"
+//         ? res.json({ success:  true })
+//         : res.json({ success:  false });
+//     });
+// }
+
+// // verify otp to verify entered otp matched with sentotp or not
+// const VERIFYOTPMSG = (req,res) => {
+//     sendOtpMsg.verify(req.body.mobileNo, req.body.otp, function(err, data) {
+//         if (err) {
+//             res.json({ msg: "something went wrong", status: -1, data: err })
+     
+//         }
+//         if (data.type == "success") {
+           
+//             UserModel.findOne({ mobileNo: req.body.mobileNo }, (err, user) => {
+//                 if (err) return  res.json({ data : err });
+//                 if (user) {
+//                     res.json({ msg: "otp verified successfully", status: 200, data: data })
+
+//                 }
+                
+//             });
+//         }
+//         if (data.type == "error") res.json({ success:  false, message:  data.message });
+//     });
+// }
+// module.exports = { SENDOTPMSG, VERIFYOTPMSG }
