@@ -1,8 +1,3 @@
-=================================================================================================================
-Doubts -
-Can we access all the records of guard attendance by passing guard ID in getGuardAttendanceById() method
-
-
 ===========================================================================================================
 Defining documents within documents
 To define an array of documents that follows a certain schema, make the value an array with the schema constructor inside.
@@ -19,3 +14,10 @@ var Post = new Schema({
   , comments  : [Comment]
 });
 This will allow you to interact very easily with subdocuments later on.
+
+=========================================================================================
+References - 
+
+https://chaduvulaprasanth.netlify.app/user-signin-signup-using-phone-number-otp-in-mern-stack
+https://www.npmjs.com/package/sendotp
+https://help.msg91.com/article/379-where-can-i-find-my-authentication-key
