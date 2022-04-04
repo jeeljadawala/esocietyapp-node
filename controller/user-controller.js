@@ -2,9 +2,7 @@ const UserModel = require("../model/user-model")
 const bcrypt = require("bcrypt")
 const nodemailer = require('nodemailer')
 require("es6-promise").polyfill()
-require("isomorphic-fetch")
-
-//const SendOtpMsg = require("sendotp");
+//require("isomorphic-fetch")
 
 //add
 module.exports.addUser = function (req, res) {         //API
@@ -111,7 +109,7 @@ module.exports.getUserById = function (req, res) {
 
     let userId = req.params.userId;
 
-    UserModel.findById({ "_id": userId }, function (err, data) {
+    UserModel.findById({ "_id": userId }).populate("user").exec(function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
@@ -129,7 +127,7 @@ module.exports.login = function (req, res) {
     let param_email = req.body.email
     let param_password = req.body.password
     let param_role = req.body.role
-    let param_captcha = req.body.captcha
+    /*let param_captcha = req.body.captcha
 
     // Install 'es6-promise' and 'isomorphic-fetch' from NPM or Yarn.
     //secret key = 6Ldw7j8fAAAAAJ8DclrU1CAsY_o7dXR7fJqX0jtl
@@ -158,7 +156,7 @@ module.exports.login = function (req, res) {
     }
 
     // The code below will run only after the reCAPTCHA is succesfully validated.
-    console.log("SUCCESS!")
+    console.log("SUCCESS!")*/
 
     let isCorrect = false;
 
@@ -221,49 +219,3 @@ module.exports.verifyEmail = function (req, res) {
 
     })
 }
-
-
-
-
-
-
-// // pass your msg91 otp creditials SendOtp
-// const  sendOtpMsg = new  SendOtpMsg("****otpcredentials****");
-
-// // send otp for sending otp to entered phone number and also pass message sender name like app name from your credintials
-// const SENDOTPMSG = (req,res) => {
-//     sendOtpMsg.send(req.body.mobileNo, "***senderID***", (err, data) => {
-//         if (err) {
-//             res.json({ msg: "Something Went Wrong", status: -1, data: err })
-//         }
-//         else {
-//            res.json({ msg: "msg send successfully", status: 200, data: data })
-//         }    
-//         data.type == "success"
-//         ? res.json({ success:  true })
-//         : res.json({ success:  false });
-//     });
-// }
-
-// // verify otp to verify entered otp matched with sentotp or not
-// const VERIFYOTPMSG = (req,res) => {
-//     sendOtpMsg.verify(req.body.mobileNo, req.body.otp, function(err, data) {
-//         if (err) {
-//             res.json({ msg: "something went wrong", status: -1, data: err })
-
-//         }
-//         if (data.type == "success") {
-
-//             UserModel.findOne({ mobileNo: req.body.mobileNo }, (err, user) => {
-//                 if (err) return  res.json({ data : err });
-//                 if (user) {
-//                     res.json({ msg: "otp verified successfully", status: 200, data: data })
-
-//                 }
-
-//             });
-//         }
-//         if (data.type == "error") res.json({ success:  false, message:  data.message });
-//     });
-// }
-// module.exports = { SENDOTPMSG, VERIFYOTPMSG }
