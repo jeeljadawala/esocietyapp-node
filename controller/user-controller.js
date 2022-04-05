@@ -36,7 +36,7 @@ module.exports.findUserByEmail = function (req, res) {
 
     console.log("param email", param_email)
 
-    UserModel.findOne({ email: param_email }, function (err, data) {
+    UserModel.findOne({ email: param_email }).populate("role").exec(function (err, data) {
         if (err) {
             res.json({ msg: "user with given mail id not found", status: -1, data: err })
         }
@@ -129,7 +129,7 @@ module.exports.login = function (req, res) {
     
     let isCorrect = false;
 
-    UserModel.findOne({ email: param_email }, function (err, data) {
+    UserModel.findOne({ email: param_email }).populate("role").exec(function (err, data) {
         if (data) {
             let ans = bcrypt.compareSync(param_password, data.password)
             if (ans == true) {
