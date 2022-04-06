@@ -47,6 +47,20 @@ module.exports.deleteGuardAttendance = function (req, res) {
     })
 }
 
+//delete all attendance record of given guard id
+module.exports.dropGuardAttendance = function (req, res) {
+
+    let guard = req.body.guard
+    GuardAttendanceModel.deleteMany({ "guard": guard }, function (err, data) {
+        if (err) {
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
+        }
+        else {
+            res.json({ msg: "all attendance of given security guard are deleted successfully", status: 200, data: data })
+        }
+    })
+}
+
 //update
 module.exports.updateGuardAttendance = function (req, res) {
     let guardAttendanceId = req.params.guardAttendanceId
