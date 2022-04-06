@@ -144,6 +144,7 @@ app.get("/visitors", visitorController.getAllVisitors)
 app.delete("/visitors/:visitorId", visitorController.deleteVisitor)
 app.put("/visitors/:visitorId", visitorController.updateVisitor)
 app.get("/visitors/:visitorId", visitorController.getVisitorById)
+app.get("/findvisitors",visitorController.getVisitorByHouse)
 
 //childSchedule
 app.post("/childSchedules", childScheduleController.addChildSchedule)

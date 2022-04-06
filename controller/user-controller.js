@@ -131,10 +131,13 @@ module.exports.login = function (req, res) {
 
     UserModel.findOne({ email: param_email }).populate("role").exec(function (err, data) {
         if (data) {
+            console.log("in if condition")
             let ans = bcrypt.compareSync(param_password, data.password)
             if (ans == true) {
-                if (data.role == param_role) {
+                console.log("password matched")
+                if (data.role._id == param_role) {
                     isCorrect = true
+                    console.log("correct credentials")
                 }
             }
         }
@@ -143,6 +146,7 @@ module.exports.login = function (req, res) {
             res.json({ msg: "Invalid Credentials...", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
             console.log("user id : ", data._id)
+            console.log("data : ",data)
             res.json({ msg: "Login....", data: data, status: 200, id: data._id })//http status code 
         }
     })

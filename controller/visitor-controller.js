@@ -95,3 +95,18 @@ module.exports.getVisitorById = function (req, res) {
         }
     })
 }
+
+//get visitor by houseId
+module.exports.getVisitorByHouse = function (req, res) {
+
+    let param_house = req.body.house;
+
+    VisitorModel.find({ "house": param_house }, function (err, data) {
+        if (err) {
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
+        }
+        else {
+            res.json({ msg: "visitor is found successfully", status: 200, data: data })
+        }
+    })
+}
