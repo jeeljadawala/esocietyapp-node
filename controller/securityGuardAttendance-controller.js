@@ -50,7 +50,7 @@ module.exports.deleteGuardAttendance = function (req, res) {
 //delete all attendance record of given guard id
 module.exports.dropGuardAttendance = function (req, res) {
 
-    let guard = req.body.guard
+    let guard = req.params.guardId
     GuardAttendanceModel.deleteMany({ "guard": guard }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
