@@ -79,3 +79,21 @@ module.exports.getMemberById = function (req, res) {
         }
     })
 }
+
+//get member by userid
+module.exports.findMemberByUserId = function (req, res) {
+    let userid = req.body.user
+console.log("userid ==:" +userid)
+    //console.log("param email", param_email)
+
+    MemberModel.findOne({ user : userid }).populate("house").exec(function (err, data) {
+        if (err) {
+            res.json({ msg: "member with given userid not found", status: -1, data: err })
+            console.log("err")
+        }
+        else {
+            res.json({ msg: "member  found successfully", status: 200, data: data })
+            
+        }
+    })
+}

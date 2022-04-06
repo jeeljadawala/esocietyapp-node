@@ -138,6 +138,7 @@ app.get("/members",memberController.getAllMembers)
 app.delete("/members/:memberId",memberController.deleteMember)
 app.put("/members/:memberId",memberController.updateMember)
 app.get("/members/:memberId",memberController.getMemberById)
+app.post("/membersByUser",memberController.findMemberByUserId)
 
 //visitor
 app.post("/visitors", visitorController.addVisitor)
@@ -145,7 +146,7 @@ app.get("/visitors", visitorController.getAllVisitors)
 app.delete("/visitors/:visitorId", visitorController.deleteVisitor)
 app.put("/visitors/:visitorId", visitorController.updateVisitor)
 app.get("/visitors/:visitorId", visitorController.getVisitorById)
-app.get("/findvisitors",visitorController.getVisitorByHouse)
+app.post("/findvisitors",visitorController.getVisitorByHouse)
 
 //childSchedule
 app.post("/childSchedules", childScheduleController.addChildSchedule)

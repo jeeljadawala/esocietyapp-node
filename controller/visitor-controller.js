@@ -101,7 +101,7 @@ module.exports.getVisitorByHouse = function (req, res) {
 
     let param_house = req.body.house;
 
-    VisitorModel.find({ "house": param_house }, function (err, data) {
+    VisitorModel.find({ house: param_house }, function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
