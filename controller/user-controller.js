@@ -16,7 +16,7 @@ module.exports.addUser = function (req, res) {         //API
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         role: req.body.role,
-        profilePhoto: "http://localhost:4000/images/" + req.body.profilePhoto
+        profilePhoto: req.body.profilePhoto!=="" ? ("http://localhost:4000/images/" + req.body.profilePhoto) : ""
     })
 
     user.save(function (err, success) {
