@@ -116,6 +116,7 @@ app.put("/guardAttendances/:guardAttendanceId", guardAttendanceController.update
 app.get("/guardAttendances/:guardAttendanceId", guardAttendanceController.getGuardAttendanceById)
 app.post("/countattendances",guardAttendanceController.getAttendance)
 app.delete("/dropguardAttendances/:guardId", guardAttendanceController.dropGuardAttendance)
+app.post("/getAttendances",guardAttendanceController.getAttendanceByGuard)
 
 
 //deliverable

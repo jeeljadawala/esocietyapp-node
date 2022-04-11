@@ -91,7 +91,7 @@ module.exports.getGuardAttendanceById = function (req, res) {
     })
 }
 
-//get guardattendences by guard
+//count guardattendences by guard
 
 module.exports.getAttendance = function (req, res) {
     let param_guardid = req.body.guard
@@ -100,6 +100,25 @@ module.exports.getAttendance = function (req, res) {
         console.log("guard id : ", param_guardid)
 
         GuardAttendanceModel.count({ guard: param_guardid }, function (err, data) {
+            if (err) {
+                console.log("guard id in if")
+                res.json({ msg: "guard attendances with given guard id not found", status: -1, data: err })
+            }
+            else {
+                console.log("guard id in else : ", data._id)
+                res.json({ msg: "guard attendance is found successfully", status: 200, data: data, id: data._id })
+            }
+        })
+    }
+}
+
+module.exports.getAttendanceByGuard = function (req, res) {
+    let param_guardid = req.body.guard
+    if (param_guardid !== undefined) {
+
+        console.log("guard id : ", param_guardid)
+
+        GuardAttendanceModel.find({ guard: param_guardid }, function (err, data) {
             if (err) {
                 console.log("guard id in if")
                 res.json({ msg: "guard attendances with given guard id not found", status: -1, data: err })
