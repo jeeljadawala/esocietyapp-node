@@ -75,6 +75,7 @@ app.delete("/users/:userId", userController.deleteUser)
 app.put("/users/:userId", userController.updateUser)
 app.get("/users/:userId", userController.getUserById)
 app.post("/forgotpwd",userController.findUserByEmail)
+app.put("/changePhoto/:userId", userController.updatePhoto)
 
 // // send otp
 // app.post("/sendotpmsg", userController.SENDOTPMSG);

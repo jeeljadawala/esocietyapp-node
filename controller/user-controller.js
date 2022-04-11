@@ -89,13 +89,33 @@ module.exports.updateUser = function (req, res) {
             //"password": password
             "firstName": firstName, "lastName": lastName
             //"profilePhoto": profilePhoto
-            //, "role": role
+            , "role": role
         }, function (err, data) {
             if (err) {
                 res.json({ msg: "Something Went Wrong", status: -1, data: err })
             }
             else {
                 res.json({ msg: "user is updated successfully", status: 200, data: data })
+            }
+        })
+}
+
+//update profile proto
+module.exports.updatePhoto = function (req, res) {
+    
+    let userId = req.params.userId
+    let profilePhoto = req.body.profilePhoto
+
+    UserModel.updateOne({ "_id": userId },
+        {
+            "profilePhoto" : profilePhoto!=="" ? ("http://localhost:4000/images/" + profilePhoto) : ""
+            
+        }, function (err, data) {
+            if (err) {
+                res.json({ msg: "Something Went Wrong", status: -1, data: err })
+            }
+            else {
+                res.json({ msg: "user profile picture updated successfully", status: 200, data: data })
             }
         })
 }
