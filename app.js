@@ -1,11 +1,6 @@
 const express = require("express")
 const mongoose = require('mongoose')
 var cors = require('cors')
-// const SendOtpMsg = require('sendotp');
-
-// //Initialize with your MSG91 auth key
-// const sendOtpMsg = new SendOtpMsg('AuthKey');
-
 
 const roleController = require("./controller/role-controller")
 const userController = require("./controller/user-controller")
@@ -77,13 +72,6 @@ app.get("/users/:userId", userController.getUserById)
 app.post("/forgotpwd",userController.findUserByEmail)
 app.put("/changePhoto/:userId", userController.updatePhoto)
 
-// // send otp
-// app.post("/sendotpmsg", userController.SENDOTPMSG);
-// // verify otp
-// app.post("/verifyotpmsg", userController.VERIFYOTPMSG);
-
-
-
 
 //house
 app.post("/houses",houseController.addHouse)
@@ -125,6 +113,7 @@ app.get("/deliverables", deliverableController.getAllDeliverables)
 app.delete("/deliverables/:deliverableId", deliverableController.deleteDeliverable)
 app.put("/deliverables/:deliverableId", deliverableController.updateDeliverable)
 app.get("/deliverables/:deliverableId", deliverableController.getDeliverableById)
+app.post("/findDeliverable", deliverableController.getDeliverableByHouse)
 
 //visitor category
 app.post("/categories",categoryController.addCategory)
@@ -156,6 +145,7 @@ app.get("/childSchedules", childScheduleController.getAllChildSchedules)
 app.delete("/childSchedules/:childScheduleId", childScheduleController.deleteChildSchedule)
 app.put("/childSchedules/:childScheduleId", childScheduleController.updateChildSchedule)
 app.get("/childSchedules/:childScheduleId", childScheduleController.getChildScheduleById)
+app.post("/findChild", childScheduleController.getChildByHouse)
 
 
  app.listen(4000,function(){

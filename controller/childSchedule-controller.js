@@ -84,3 +84,18 @@ module.exports.getChildScheduleById = function(req, res){
         }
     })
 }
+
+//list child schedule by house
+module.exports.getChildByHouse = function(req, res){
+    
+    let house = req.body.house
+    ChildScheduleModel.find({"house" : house}).populate("house").exec(function(err, data){
+        if (err) {
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
+        }
+        else {
+            console.log("data : ",data)
+            res.json({ msg: "child schedule is found successfully", status: 200, data: data })
+        }
+    })
+}

@@ -79,3 +79,18 @@ module.exports.getDeliverableById = function(req, res){
         }
     })
 }
+
+//list deliverable by house
+module.exports.getDeliverableByHouse = function(req, res){
+    
+    let house = req.body.house
+    DeliverableModel.find({"house" : house}).populate("house").exec(function(err, data){
+        if (err) {
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
+        }
+        else {
+            console.log("data : ",data)
+            res.json({ msg: "deliverable is found successfully", status: 200, data: data })
+        }
+    })
+}
