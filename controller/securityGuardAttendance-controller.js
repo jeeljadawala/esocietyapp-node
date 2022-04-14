@@ -12,7 +12,7 @@ module.exports.addGuardAttendance = function (req, res) {         //API
 
     guardAttendance.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
@@ -97,15 +97,15 @@ module.exports.getAttendance = function (req, res) {
     let param_guardid = req.body.guard
     if (param_guardid !== undefined) {
 
-        console.log("guard id : ", param_guardid)
+        //console.log("guard id : ", param_guardid)
 
         GuardAttendanceModel.count({ guard: param_guardid }, function (err, data) {
             if (err) {
-                console.log("guard id in if")
+                //console.log("guard id in if")
                 res.json({ msg: "guard attendances with given guard id not found", status: -1, data: err })
             }
             else {
-                console.log("guard id in else : ", data._id)
+                //console.log("guard id in else : ", data._id)
                 res.json({ msg: "guard attendance is found successfully", status: 200, data: data, id: data._id })
             }
         })
@@ -116,15 +116,15 @@ module.exports.getAttendanceByGuard = function (req, res) {
     let param_guardid = req.body.guard
     if (param_guardid !== undefined) {
 
-        console.log("guard id : ", param_guardid)
+        //console.log("guard id : ", param_guardid)
 
         GuardAttendanceModel.find({ guard: param_guardid }, function (err, data) {
             if (err) {
-                console.log("guard id in if")
+                //console.log("guard id in if")
                 res.json({ msg: "guard attendances with given guard id not found", status: -1, data: err })
             }
             else {
-                console.log("guard id in else : ", data._id)
+                //console.log("guard id in else : ", data._id)
                 res.json({ msg: "guard attendance is found successfully", status: 200, data: data, id: data._id })
             }
         })

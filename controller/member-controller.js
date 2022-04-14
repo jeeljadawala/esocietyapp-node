@@ -2,8 +2,6 @@ const MemberModel = require("../model/member-model")
 
 //add
 module.exports.addMember = function (req, res) {         //API
-    //db insert role
-
 
     let member = new MemberModel({
         memberName: req.body.memberName,
@@ -14,7 +12,7 @@ module.exports.addMember = function (req, res) {         //API
 
     member.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
@@ -83,13 +81,13 @@ module.exports.getMemberById = function (req, res) {
 //get member by userid
 module.exports.findMemberByUserId = function (req, res) {
     let userid = req.body.user
-    console.log("userid ==:" + userid)
+    //console.log("userid ==:" + userid)
     //console.log("param email", param_email)
 
     MemberModel.findOne({ user: userid }).populate("house").exec(function (err, data) {
         if (err) {
             res.json({ msg: "member with given userid not found", status: -1, data: err })
-            console.log("err")
+            //console.log("err")
         }
         else {
             res.json({ msg: "member found successfully", status: 200, data: data })

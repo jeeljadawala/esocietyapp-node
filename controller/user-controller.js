@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer')
 //add
 module.exports.addUser = function (req, res) {         //API
 
-    console.log(req.body.firstName)
+    //console.log(req.body.firstName)
 
     let encryptedPassword = bcrypt.hashSync(req.body.password, 10)
 
@@ -16,12 +16,12 @@ module.exports.addUser = function (req, res) {         //API
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         role: req.body.role,
-        profilePhoto: req.body.profilePhoto!=="" ? ("http://localhost:4000/images/" + req.body.profilePhoto) : ""
+        profilePhoto: req.body.profilePhoto !== "" ? ("http://localhost:4000/images/" + req.body.profilePhoto) : ""
     })
 
     user.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
@@ -34,7 +34,7 @@ module.exports.addUser = function (req, res) {         //API
 module.exports.findUserByEmail = function (req, res) {
     let param_email = req.body.email
 
-    console.log("param email", param_email)
+    //console.log("param email", param_email)
 
     UserModel.findOne({ email: param_email }).populate("role").exec(function (err, data) {
         if (err) {
@@ -102,14 +102,14 @@ module.exports.updateUser = function (req, res) {
 
 //update profile proto
 module.exports.updatePhoto = function (req, res) {
-    
+
     let userId = req.params.userId
     let profilePhoto = req.body.profilePhoto
 
     UserModel.updateOne({ "_id": userId },
         {
-            "profilePhoto" : profilePhoto!=="" ? ("http://localhost:4000/images/" + profilePhoto) : ""
-            
+            "profilePhoto": profilePhoto !== "" ? ("http://localhost:4000/images/" + profilePhoto) : ""
+
         }, function (err, data) {
             if (err) {
                 res.json({ msg: "Something Went Wrong", status: -1, data: err })
@@ -126,8 +126,8 @@ module.exports.updatePhoto = function (req, res) {
 module.exports.getUserById = function (req, res) {
 
     let userId = req.params.userId;
-    console.log("user id - ",userId)
-    
+    //console.log("user id - ",userId)
+
     UserModel.findById({ "_id": userId }).populate("role").exec(function (err, data) {
         if (err) {
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
@@ -146,18 +146,18 @@ module.exports.login = function (req, res) {
     let param_email = req.body.email
     let param_password = req.body.password
     let param_role = req.body.role
-    
+
     let isCorrect = false;
 
     UserModel.findOne({ email: param_email }).populate("role").exec(function (err, data) {
         if (data) {
-            console.log("in if condition")
+            //console.log("in if condition")
             let ans = bcrypt.compareSync(param_password, data.password)
             if (ans == true) {
-                console.log("password matched")
+                //console.log("password matched")
                 if (data.role._id == param_role) {
                     isCorrect = true
-                    console.log("correct credentials")
+                    //console.log("correct credentials")
                 }
             }
         }
@@ -165,8 +165,8 @@ module.exports.login = function (req, res) {
         if (isCorrect == false) {
             res.json({ msg: "Invalid Credentials...", data: err, status: -1 })//-1  [ 302 404 500 ]
         } else {
-            console.log("user id : ", data._id)
-            console.log("data : ",data)
+            //console.log("user id : ", data._id)
+            //console.log("data : ",data)
             res.json({ msg: "Login....", data: data, status: 200, id: data._id })//http status code 
         }
     })
@@ -175,7 +175,7 @@ module.exports.login = function (req, res) {
 //verify mail address
 module.exports.verifyEmail = function (req, res) {
 
-    console.log("verify email api called")
+    //console.log("verify email api called")
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -200,13 +200,13 @@ module.exports.verifyEmail = function (req, res) {
         `
     };
 
-    console.log("otp received : ", req.body.otp)
+    //console.log("otp received : ", req.body.otp)
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             res.json({ status: true, respMesg: 'Email Sent Successfully', data: error })
         }
         else {
-            console.log("mail sent")
+            //console.log("mail sent")
             res.json({ status: true, respMesg: 'Email Sent Successfully', data: info })
         }
 

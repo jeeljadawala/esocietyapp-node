@@ -1,9 +1,7 @@
 const VehicleModel = require("../model/vehicle-model")
 
 module.exports.addVehicle = function (req, res) {         //API
-    //db insert role
-   
-
+    
     let vehicle = new VehicleModel({
         vehicleNo: req.body.vehicleNo,
         parkingId: req.body.parkingId,
@@ -14,7 +12,7 @@ module.exports.addVehicle = function (req, res) {         //API
 
     vehicle.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: data.err })
         }
         else {

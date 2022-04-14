@@ -1,8 +1,8 @@
 const HouseModel = require("../model/house-model")
 
 module.exports.addHouse = function (req, res) {         //API
-    //db insert role
-    console.log(req.body.houseTitle)
+   
+    //console.log(req.body.houseTitle)
 
     let house = new HouseModel({
         houseTitle: req.body.houseTitle

@@ -14,7 +14,7 @@ module.exports.addGuard = function (req, res) {         //API
 
     guard.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
@@ -83,14 +83,14 @@ module.exports.getGuardById = function(req, res){
 module.exports.findGuardByUser = function (req, res) {
     let param_user = req.body.user
 
-    console.log("user id : ", param_user)
+    //console.log("user id : ", param_user)
 
     GuardModel.findOne({ user: param_user }, function (err, data) {
         if (err) {
             res.json({ msg: "guard with given user id not found", status: -1, data: err })
         }
         else {
-            console.log("guard id : ", data._id)
+            //console.log("guard id : ", data._id)
             res.json({ msg: "guard is found successfully", status: 200, data: data, id : data._id })
         }
     })
