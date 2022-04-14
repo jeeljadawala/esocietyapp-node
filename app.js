@@ -71,6 +71,7 @@ app.put("/users/:userId", userController.updateUser)
 app.get("/users/:userId", userController.getUserById)
 app.post("/forgotpwd",userController.findUserByEmail)
 app.put("/changePhoto/:userId", userController.updatePhoto)
+app.put("/resetpwd/:userId", userController.resetPwd)
 
 
 //house
