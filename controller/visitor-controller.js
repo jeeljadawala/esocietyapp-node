@@ -21,7 +21,7 @@ module.exports.addVisitor = function (req, res) {         //API
 
     visitor.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {

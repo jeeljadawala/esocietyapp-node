@@ -2,7 +2,6 @@ const DeliverableModel = require("../model/deliverable-model")
 
 //add
 module.exports.addDeliverable = function (req, res) {         //API
-    //db insert role
     //console.log(req.body.roleName)
 
     let deliverable = new DeliverableModel({
@@ -15,7 +14,7 @@ module.exports.addDeliverable = function (req, res) {         //API
 
     deliverable.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: data.err })
         }
         else {
@@ -89,7 +88,7 @@ module.exports.getDeliverableByHouse = function(req, res){
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
-            console.log("data : ",data)
+            //console.log("data : ",data)
             res.json({ msg: "deliverable is found successfully", status: 200, data: data })
         }
     })

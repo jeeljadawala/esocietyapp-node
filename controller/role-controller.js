@@ -2,7 +2,7 @@ const RoleModel = require("../model/role-model")
 
 module.exports.addRole = function (req, res) {         //API
     //db insert role
-    console.log(req.body.roleName)
+    //console.log(req.body.roleName)
 
     let role = new RoleModel({
         roleName: req.body.roleName
@@ -10,7 +10,7 @@ module.exports.addRole = function (req, res) {         //API
 
     role.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {

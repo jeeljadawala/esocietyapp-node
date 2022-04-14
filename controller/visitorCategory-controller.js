@@ -1,8 +1,6 @@
 const CategoryModel = require("../model/visitorCategory-model")
 
 module.exports.addCategory = function (req, res) {         //API
-    //db insert role
-    //console.log(req.body.roleName)
 
     let category = new CategoryModel({
         categoryName: req.body.categoryName
@@ -10,7 +8,7 @@ module.exports.addCategory = function (req, res) {         //API
 
     category.save(function (err, success) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.json({ msg: "Something Went Wrong", status: -1, data: data.err })
         }
         else {
