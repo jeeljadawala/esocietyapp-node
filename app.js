@@ -18,7 +18,8 @@ const app = express()
 
 //middle ware 
 app.use(express.json()) //mobile -> accept json data from request and set data into body 
-app.use(express.urlencoded({extended:true})) //web --> accept url encoded data from request and set data into body  
+app.use(express.urlencoded({extended:true})) 
+//web --> accept url encoded data from request and set data into body  
 
 
 //cors
