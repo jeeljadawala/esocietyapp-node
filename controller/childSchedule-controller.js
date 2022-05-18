@@ -17,7 +17,7 @@ module.exports.addChildSchedule = function (req, res) {         //API
     childSchedule.save(function (err, success) {
         if (err) {
             //console.log(err);
-            res.json({ msg: "Something Went Wrong ! Please try again later", status: -1, data: data.err })
+            res.json({ msg: "Something Went Wrong ! Please try again later", status: -1, data: err })
         }
         else {
             res.json({ msg: "childSchedule added successfully", status: 200, data: success })

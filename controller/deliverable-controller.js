@@ -15,7 +15,7 @@ module.exports.addDeliverable = function (req, res) {         //API
     deliverable.save(function (err, success) {
         if (err) {
             //console.log(err);
-            res.json({ msg: "Something Went Wrong", status: -1, data: data.err })
+            res.json({ msg: "Something Went Wrong", status: -1, data: err })
         }
         else {
             res.json({ msg: "deliverable added successfully", status: 200, data: success })
